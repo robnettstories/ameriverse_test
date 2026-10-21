@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Workflows">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/app.css">
+<script src="../assets/app.js" defer></script>
+<meta name="app-docs" content="../assets/docs/AIA_Monthly_Billing_Deadline_Cheat_Sheet_Checklist.docx|../assets/docs/AIA_Monthly_Billing_Process-PM.APM.docx|../assets/docs/AIA_Monthly_Billing_Process-Superintendent.docx">
+<title>AIA Monthly Billing Workflow</title>
+<style>
+  :root {
+    --bg: #EEF1F3;
+    --surface: #FFFFFF;
+    --ink: #0C273C;
+    --muted: #5B6B7C;
+    --rule: #D6DCE2;
+    --magenta: #AF2838;
+    --blue: #0C273C;
+    --blue-alt: #3D6088;
+    --orange: #171C22;
+    --decision-text: #FFFFFF;
+    --gray: #8792A0;
+    --edge-label: #AF2838;
+    --ring: #AF2838;
+    --shadow: 0 18px 44px -18px rgba(12, 39, 60, 0.35);
+    --overlay: rgba(12, 39, 60, 0.55);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #FFFFFF;
+      --surface: #FFFFFF;
+      --ink: #0C273C;
+      --muted: #5B6B7C;
+      --rule: #D6DCE2;
+      --magenta: #AF2838;
+      --blue: #0C273C;
+      --blue-alt: #3D6088;
+      --orange: #171C22;
+      --decision-text: #FFFFFF;
+      --gray: #8792A0;
+      --edge-label: #AF2838;
+      --ring: #AF2838;
+      --overlay: rgba(12, 39, 60, 0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --ink: #0C273C;
+    --muted: #5B6B7C;
+    --rule: #D6DCE2;
+    --magenta: #AF2838;
+    --blue: #0C273C;
+    --blue-alt: #3D6088;
+    --orange: #171C22;
+    --decision-text: #FFFFFF;
+    --gray: #8792A0;
+    --edge-label: #AF2838;
+    --ring: #AF2838;
+    --overlay: rgba(12, 39, 60, 0.55);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+    padding-inline: 18px;
+    padding-block: 26px;
+  }
+  h1, h2, .edge-label, .fo-main {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  }
+  .wrap { max-width: 1500px; margin: 0 auto; }
+
+  header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .brand-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-badge {
+    flex: none;
+    height: 56px;
+    padding: 8px 14px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--rule);
+  }
+  .logo-badge img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+  .title-block h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: 0.01em;
+  }
+  .title-block p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .hint {
+    font-size: 12.5px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hint svg { flex: none; opacity: 0.8; }
+
+  .toolbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .reminders-banner {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--magenta);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+  }
+  .reminders-banner-title {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    color: var(--magenta);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .reminders-banner-body ul {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 32px;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .reminders-banner-body li {
+    margin-bottom: 6px;
+    break-inside: avoid;
+  }
+  .reminders-banner-body .k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.86em;
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  @media (max-width: 720px) {
+    .reminders-banner-body ul { columns: 1; }
+  }
+  .cheat-banner {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--magenta);
+    border-radius: 12px;
+    padding: 14px 16px 14px 20px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cheat-banner-title {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    color: var(--magenta);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .cheat-banner-body { font-size: 13.5px; color: var(--muted); }
+  .cheat-btn {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: #FFFFFF;
+    border: none;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: filter 0.15s ease;
+  }
+  .cheat-btn:hover { filter: brightness(1.12); }
+  .cheat-btn:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 2px; }
+  .cheat-btn-group { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  .cheat-btn.cheat-btn-alt { background: var(--blue-alt); }
+  .sop-step { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .sop-step:last-of-type { border-bottom: none; }
+  .sop-step-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+  .sop-step-title { font-weight: 700; font-size: 14.5px; }
+  .sop-due { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; color: var(--blue); background: color-mix(in srgb, var(--blue) 12%, transparent); padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .sop-intro { font-size: 13.5px; color: var(--muted); margin-bottom: 16px; }
+  .sop-summary { margin-top: 18px; padding: 12px 14px; border-radius: 10px; background: color-mix(in srgb, var(--blue) 7%, transparent); font-size: 12.5px; line-height: 1.6; }
+  .sop-summary b { display: block; margin-bottom: 6px; font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.03em; font-size: 12px; color: var(--blue); }
+  .modal-tag.tag-reference { background: color-mix(in srgb, var(--magenta) 20%, transparent); color: var(--magenta); }
+  .cheat-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 4px; }
+  .cheat-table th, .cheat-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .cheat-table th { font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  .cheat-table td.date-cell { font-weight: 700; color: var(--blue); white-space: nowrap; }
+  .cheat-table td.owner-cell { color: var(--muted); }
+  .cheat-role-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  @media (max-width: 640px) { .cheat-role-summary { grid-template-columns: 1fr; } }
+  .cheat-role-summary div {
+    background: color-mix(in srgb, var(--blue) 7%, transparent);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .cheat-domino {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--magenta) 10%, transparent);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .cheat-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: none;
+    cursor: pointer;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .cheat-download:hover { text-decoration: underline; }
+  .cheat-download:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 2px; }
+
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+  .sw.magenta { background: var(--magenta); }
+  .sw.blue { background: var(--blue); }
+  .sw.orange { background: var(--orange); }
+  .sw.blue-alt { background: var(--blue-alt); }
+
+  .diagram-frame {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .diagram-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46%;
+    min-width: 340px;
+    max-width: 680px;
+    height: auto;
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  /* ---- section-based timeline layout ---- */
+  .sections {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .section-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 22px;
+    background: var(--blue);
+    color: #fff;
+  }
+  .section-num {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .section-head-text { min-width: 0; }
+  .section-date {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+  }
+  .section-title {
+    font-size: 13.5px;
+    opacity: 0.86;
+    margin-top: 2px;
+  }
+  .section-body { padding: 22px; }
+  .section-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 16px;
+    max-width: 74ch;
+  }
+
+  .chip-row {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 10px 6px;
+  }
+  .chip-lane-label {
+    flex: none;
+    width: 100%;
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blue-alt);
+    margin: 14px 0 2px;
+  }
+  .chip-row + .chip-lane-label { margin-top: 4px; }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: "Source Sans 3", sans-serif;
+    text-align: left;
+    cursor: pointer;
+    max-width: 260px;
+    flex: 1 1 200px;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .chip:hover { filter: brightness(1.12); transform: translateY(-1px); }
+  .chip:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+  .chip-alt { background: var(--blue-alt); }
+  .chip-terminal { background: var(--magenta); }
+  .chip-num {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12.5px;
+  }
+  .chip-label {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.18;
+  }
+  .chip-arrow {
+    flex: none;
+    align-self: center;
+    color: var(--gray);
+    font-size: 20px;
+    line-height: 1;
+    padding: 0 2px;
+  }
+  .chip-arrow.arrow-loop { color: var(--magenta); font-weight: 700; }
+
+  .loop-box {
+    margin: 16px 0 4px;
+    border: 2px dashed var(--blue-alt);
+    border-radius: 12px;
+    padding: 16px 18px;
+    background: color-mix(in srgb, var(--blue-alt) 6%, transparent);
+  }
+  .loop-box-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-bottom: 12px;
+  }
+  .loop-box-title {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--blue-alt);
+  }
+  .loop-box-note { font-size: 12px; color: var(--muted); }
+  .loop-trigger, .loop-return {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    font-style: italic;
+    margin: 6px 0;
+  }
+  .loop-trigger { color: var(--blue); }
+  .loop-return { color: var(--magenta); }
+  .loop-line {
+    flex: none;
+    width: 30px;
+    height: 0;
+    border-top: 2.5px solid var(--blue);
+  }
+  .loop-return .loop-line { border-top: 2.5px dashed var(--magenta); }
+
+  footer.credit {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---- modal ---- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal {
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 14px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 82vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow);
+    padding: 26px 26px 22px;
+    transform: translateY(10px) scale(0.98);
+    transition: transform 0.18s ease;
+  }
+  .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+  .modal.modal-wide { max-width: 780px; }
+  .modal-wide .cheat-table { table-layout: fixed; }
+  .modal-wide .cheat-table col.col-date, .modal-wide .cheat-table th:nth-child(1), .modal-wide .cheat-table td:nth-child(1) { width: 16%; }
+  .modal-wide .cheat-table th:nth-child(2), .modal-wide .cheat-table td:nth-child(2) { width: 23%; }
+  .modal-wide .cheat-table th:nth-child(4), .modal-wide .cheat-table td:nth-child(4) { width: 20%; }
+  .modal-tag {
+    display: inline-block;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .modal-tag.tag-process { background: color-mix(in srgb, var(--blue) 18%, transparent); color: var(--blue); }
+  .modal-tag.tag-decision { background: color-mix(in srgb, var(--orange) 20%, transparent); color: var(--orange); }
+  .modal-tag.tag-terminal { background: color-mix(in srgb, var(--magenta) 20%, transparent); color: var(--magenta); }
+  .modal h2 { font-size: 24px; margin: 0 0 14px; font-weight: 700; }
+  .modal ul { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; }
+  .modal ul li { margin-bottom: 8px; }
+  .modal ul ul { margin-top: 6px; font-size: 13.5px; color: var(--muted); }
+  .modal .k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.86em;
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+  }
+  .modal-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .modal-gallery figure {
+    margin: 0;
+    flex: 1 1 210px;
+    max-width: 280px;
+  }
+  .modal-gallery img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    background: #fff;
+    cursor: zoom-in;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .modal-gallery img:hover {
+    filter: brightness(1.04);
+    transform: translateY(-1px);
+  }
+  .modal-gallery figcaption {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 5px;
+    line-height: 1.3;
+  }
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 14, 22, 0.86);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+    z-index: 1000;
+  }
+  .lightbox-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox-figure {
+    max-width: min(94vw, 1400px);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .lightbox-figure img {
+    max-width: 100%;
+    max-height: 82vh;
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+    background: #fff;
+    cursor: zoom-out;
+  }
+  .lightbox-caption {
+    color: #F2F0EA;
+    font-size: 13.5px;
+    text-align: center;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: #FFFFFF;
+    font-size: 22px;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { background: rgba(255, 255, 255, 0.22); }
+  .lightbox-close:focus-visible { outline: 3px solid var(--magenta); outline-offset: 2px; }
+  @media (max-width: 640px) {
+    .lightbox-overlay { padding: 18px; }
+  }
+  .modal-close:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+  .modal-close:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 1px; }
+  .modal-wrap { position: relative; }
+  .modal-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+  .modal-nav button {
+    background: none;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: "Source Sans 3", sans-serif;
+  }
+  .modal-nav button:hover { border-color: var(--blue); color: var(--blue); }
+  .modal-nav button:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 1px; }
+  .modal-nav button:disabled { opacity: 0.35; cursor: default; }
+  .modal-nav button:disabled:hover { border-color: var(--rule); color: var(--ink); }
+
+  @media (max-width: 640px) {
+    .modal { padding: 22px 18px 18px; }
+    .modal h2 { font-size: 20px; }
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="brand-block">
+      <span class="logo-badge"><img src="../assets/img/1f50c085c359.webp" alt="AmeriTech Contracting logo"></span>
+      <div class="title-block">
+        <h1>AIA Monthly Billing Workflow</h1>
+        <p>AmeriTech Contracting &ndash; from Pencil Requisition to payment approval</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <span class="hint">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1.5c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5S11.6 1.5 8 1.5Z" stroke="currentColor" stroke-width="1.2"/><path d="M8 7.2v4M8 5v.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Click any step for the full detail
+      </span>
+    </div>
+  </header>
+
+  <div class="legend">
+    <span><span class="sw magenta"></span> Start / End</span>
+    <span><span class="sw blue"></span> PM / Cashmere action</span>
+    <span><span class="sw blue-alt"></span> Superintendent path</span>
+    <span><span class="sw" style="background:none;border:2px dashed var(--magenta);width:10px;height:10px;"></span> Revision loop-back</span>
+  </div>
+
+  <div class="cheat-banner">
+    <div class="cheat-banner-text">
+      <div class="cheat-banner-title">Billing rule</div>
+      <div class="cheat-banner-body">Only completed work is invoiced &mdash; incomplete work moves to next month's invoice.</div>
+    </div>
+    <div class="cheat-btn-group">
+      <button type="button" class="cheat-btn" id="cheatSheetBtn">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 2.5h10a1 1 0 0 1 1 1V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 5.5h7M4.5 8h7M4.5 10.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Monthly Deadline Cheat Sheet
+      </button>
+      <button type="button" class="cheat-btn cheat-btn-alt" id="sopPmBtn">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4.5 2h6l2 2v10a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 7.5h5M5.5 10h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        PM/APM SOP
+      </button>
+      <button type="button" class="cheat-btn cheat-btn-alt" id="sopSuperBtn">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4.5 2h6l2 2v10a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 7.5h5M5.5 10h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Superintendent SOP
+      </button>
+    </div>
+  </div>
+
+  <div class="diagram-frame">
+    <img class="diagram-watermark" src="../assets/img/e5af226e2478.webp" alt="">
+    <div class="sections">
+    <div class="section-card">
+  <div class="section-head">
+    <span class="section-num">1</span>
+    <div class="section-head-text">
+      <div class="section-date">1st–19th (19 days)</div>
+      <div class="section-title">Build the record</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <p class="section-desc">Field completion gets tracked and reviewed, then marked up into the Pen Req.</p>
+    <div class="chip-row"><div class="node chip chip-terminal" tabindex="0" role="button" data-step="m1"><span class="chip-num">1</span><span class="chip-label">PM Drafts the Monthly AIA Template</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip" tabindex="0" role="button" data-step="m2"><span class="chip-num">2</span><span class="chip-label">PM &amp; Superintendent Review Completed Work</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip" tabindex="0" role="button" data-step="m2b"><span class="chip-num">2b</span><span class="chip-label">PM Notifies Subcontractors of Invoice Due Date</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip" tabindex="0" role="button" data-step="m3"><span class="chip-num">3</span><span class="chip-label">PM Marks Up the Pen Req</span></div></div>
+  </div>
+</div>
+<div class="section-card">
+  <div class="section-head">
+    <span class="section-num">2</span>
+    <div class="section-head-text">
+      <div class="section-date">20th (1 day)</div>
+      <div class="section-title">Internal QC</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <p class="section-desc">The marked-up Pen Req gets an internal check before anything goes external.</p>
+    <div class="chip-row"><div class="node chip" tabindex="0" role="button" data-step="m4"><span class="chip-num">4</span><span class="chip-label">PM Sends Marked-Up Pen Req to Mike for QC</span></div></div>
+  </div>
+</div>
+<div class="section-card">
+  <div class="section-head">
+    <span class="section-num">3</span>
+    <div class="section-head-text">
+      <div class="section-date">21st–24th (4 days)</div>
+      <div class="section-title">COR buy-in &amp; walkthrough</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <p class="section-desc">PM and Superintendent secure Government/COR sign-off, including the walkthrough &amp; revision loop that runs alongside it.</p>
+    <div class="chip-row"><div class="node chip" tabindex="0" role="button" data-step="m5"><span class="chip-num">5</span><span class="chip-label">PM Works with Superintendent on COR Buy In</span></div></div><div class="loop-box">
+  <div class="loop-box-head">
+    <span class="loop-box-title">Superintendent walkthrough &amp; revision loop</span>
+    <span class="loop-box-note">Runs every month inside the COR buy-in window</span>
+  </div>
+  <div class="loop-trigger"><span class="loop-line"></span> each month</div>
+  <div class="chip-row"><div class="node chip chip-alt" tabindex="0" role="button" data-step="w1"><span class="chip-num">W1</span><span class="chip-label">Schedule the Walkthrough</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip chip-alt" tabindex="0" role="button" data-step="w2"><span class="chip-num">W2</span><span class="chip-label">PM Sends the Pencil Requisition</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip chip-alt" tabindex="0" role="button" data-step="w3"><span class="chip-num">W3</span><span class="chip-label">Superintendent Walks the Site</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip chip-alt" tabindex="0" role="button" data-step="w4"><span class="chip-num">W4</span><span class="chip-label">Superintendent Discusses with PM</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip chip-alt" tabindex="0" role="button" data-step="w5"><span class="chip-num">W5</span><span class="chip-label">PM Revises AIA &amp; Gets COR Approval</span></div></div>
+  <div class="loop-return"><span class="loop-line"></span> revised buy-in feeds back in</div>
+</div><div class="chip-row"><div class="node chip" tabindex="0" role="button" data-step="m6"><span class="chip-num">6</span><span class="chip-label">PM &amp; Superintendent Receive COR Buy In</span></div></div>
+  </div>
+</div>
+<div class="section-card">
+  <div class="section-head">
+    <span class="section-num">4</span>
+    <div class="section-head-text">
+      <div class="section-date">25th (1 day)</div>
+      <div class="section-title">Notarize &amp; route</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <p class="section-desc">Approved Pen Req goes to Cashmere/Sue/Cat for notarization and Drew's signature, then out for CO/COR signature.</p>
+    <div class="chip-row"><div class="node chip" tabindex="0" role="button" data-step="m7"><span class="chip-num">7</span><span class="chip-label">PM Sends Approved Pen Req to Cashmere/Sue/Cat</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip" tabindex="0" role="button" data-step="m8"><span class="chip-num">8</span><span class="chip-label">Cashmere/Sue/Cat Emails Notarized Pen Req to PM</span></div></div>
+  </div>
+</div>
+<div class="section-card">
+  <div class="section-head">
+    <span class="section-num">5</span>
+    <div class="section-head-text">
+      <div class="section-date">26th–30/31st (5-6 days)</div>
+      <div class="section-title">Signature &amp; upload</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <p class="section-desc">Cashmere/Sue follow up on the CO/COR signature, then upload the signed AIA and notify the team.</p>
+    <div class="chip-row"><div class="node chip" tabindex="0" role="button" data-step="m9"><span class="chip-num">9</span><span class="chip-label">Cashmere/Sue Follow Up on CO/COR Signature</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip" tabindex="0" role="button" data-step="m10"><span class="chip-num">10</span><span class="chip-label">AIA Pen Req Signed by CO/COR</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip" tabindex="0" role="button" data-step="m11"><span class="chip-num">11</span><span class="chip-label">PM Sends Signed AIA Invoice to Cashmere/Sue</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip" tabindex="0" role="button" data-step="m12"><span class="chip-num">12</span><span class="chip-label">Cashmere/Sue Upload Signed AIA to Billing Platform</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip" tabindex="0" role="button" data-step="m13"><span class="chip-num">13</span><span class="chip-label">Cashmere/Sue Send Upload Notification Email</span></div></div>
+  </div>
+</div>
+<div class="section-card">
+  <div class="section-head">
+    <span class="section-num">6</span>
+    <div class="section-head-text">
+      <div class="section-date">48-hour follow-up</div>
+      <div class="section-title">Follow-up &amp; approval</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <p class="section-desc">A 48-hour check on the billing platform closes out the cycle once the invoice is approved for payment.</p>
+    <div class="chip-row"><div class="node chip" tabindex="0" role="button" data-step="m14"><span class="chip-num">14</span><span class="chip-label">Cashmere/Sue Check Billing Platform (48-Hour Follow-Up)</span></div><span class="chip-arrow" aria-hidden="true">&rarr;</span><div class="node chip chip-terminal" tabindex="0" role="button" data-step="m15"><span class="chip-num">15</span><span class="chip-label">AIA Invoice Gets Approval for Payment</span></div></div>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <footer class="credit">Based on AmeriTech's AIA Monthly Billing Flow Chart &mdash; click a step for the full write-up.</footer>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-wrap">
+    <div class="modal" id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <span class="modal-tag" id="modalTag"></span>
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody"></div>
+      <div class="modal-nav">
+        <button id="modalPrev" type="button">&larr; Previous step</button>
+        <button id="modalNext" type="button">Next step &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
+  <div class="lightbox-figure">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<script>
+const STEP_DATA = {"m1": {"title": "PM Drafts the Monthly AIA Template", "tag": "1st\u201319th (19 days)", "kind": "terminal", "bodyHtml": "<p>PM drafts Monthly AIA Template (Pencil Requisitons) in Procore.</p><p>This opens the first control window of the month &mdash; the 19-day stretch where the PM and Superintendent build the record that everything else in the cycle depends on.</p><div class=\"modal-gallery\"><figure><img src=\"../assets/img/17ed1e46d3aa.webp\" alt=\"Training slide \u2014 Days 1\u201319: PM/APM and Superintendent responsibilities side by side\"><figcaption>Training slide \u2014 Days 1\u201319: PM/APM and Superintendent responsibilities side by side</figcaption></figure></div>"}, "m2": {"title": "PM & Superintendent Review Completed Work", "tag": "1st\u201319th (19 days)", "kind": "process", "bodyHtml": "<p>PM and Superintendent to review what work has been completed this billing period.</p><p>Only work that is actually complete gets billed &mdash; this review is where that line gets drawn for the month, using Daily Logs, photos, and the Three-Week Lookahead as the evidence trail.</p><div class=\"modal-gallery\"><figure><img src=\"../assets/img/08a211915624.webp\" alt=\"Training slide \u2014 the 19th: field truth becomes the basis for the invoice\"><figcaption>Training slide \u2014 the 19th: field truth becomes the basis for the invoice</figcaption></figure></div>"}, "m2b": {"title": "PM Notifies Subcontractors of Invoice Due Date", "tag": "1st\u201319th (19 days)", "kind": "process", "bodyHtml": "<p>PM will let subcontractors know invoices are due before and on the 20th.</p><p>Getting subcontractor invoices in on time is what makes the markup on the 20th possible &mdash; a late sub invoice pushes the whole month's billing back.</p>"}, "m3": {"title": "PM Marks Up the Pen Req", "tag": "1st\u201319th (19 days)", "kind": "process", "bodyHtml": "<p>PM will mark up the Pen Req.</p><p>The markup translates the field review into the actual percentages and line items that will move to QC on the 20th.</p>"}, "m4": {"title": "PM Sends Marked-Up Pen Req to Mike for QC", "tag": "20th (1 day)", "kind": "process", "bodyHtml": "<p>PM sends marked up AIA Pen Req and Actualized Schedule to Mike to get QC'd (20th of the month).</p><p>This is the internal control point before anything goes external to the Government/COR &mdash; a single day set aside to catch errors before they become someone else's problem.</p><div class=\"modal-gallery\"><figure><img src=\"../assets/img/d8649c123414.webp\" alt=\"Training slide \u2014 the 20th: internal billing control point\"><figcaption>Training slide \u2014 the 20th: internal billing control point</figcaption></figure></div>"}, "m5": {"title": "PM Works with Superintendent on COR Buy In", "tag": "21st\u201324th (4 days)", "kind": "process", "bodyHtml": "<p>Once approved, PM will work with Superintendent on getting COR Buy In.</p><p>This step also kicks off the Superintendent walkthrough &amp; revision loop each month &mdash; see the loop below.</p><div class=\"modal-gallery\"><figure><img src=\"../assets/img/14e2288cb67e.webp\" alt=\"Training slide \u2014 Days 21\u201324: the COR buy-in window\"><figcaption>Training slide \u2014 Days 21\u201324: the COR buy-in window</figcaption></figure></div>"}, "m6": {"title": "PM & Superintendent Receive COR Buy In", "tag": "21st\u201324th (4 days)", "kind": "process", "bodyHtml": "<p>PM and Superintendent receives COR Buy In.</p><p>Each month this also picks up the outcome of the Superintendent walkthrough &amp; revision loop below &mdash; once the PM revises the AIA (if necessary) and COR approves it by email, that revised buy-in feeds back into this step.</p><p>Buy-in has to be final by the 24th so there's still time left in the month to route the package for notarization and signature.</p>"}, "m7": {"title": "PM Sends Approved Pen Req to Cashmere/Sue/Cat", "tag": "25th (1 day)", "kind": "process", "bodyHtml": "<p>PM sends approved AIA Pen Req to Cashmere/Sue/Cat to get notorized and signed by Drew.</p><p>With COR buy-in locked in, the package moves from the field/PM side of the process to the Cashmere/Sue/Cat signature chain for the rest of the month.</p><div class=\"modal-gallery\"><figure><img src=\"../assets/img/86e6d7d31494.webp\" alt=\"Training slide \u2014 Days 25\u201329: notarization, signature, and upload\"><figcaption>Training slide \u2014 Days 25\u201329: notarization, signature, and upload</figcaption></figure></div>"}, "m8": {"title": "Cashmere/Sue/Cat Emails Notarized Pen Req to PM", "tag": "25th (1 day)", "kind": "process", "bodyHtml": "<p>Cashmere/Sue/Cat emails AIA Pen Req (notorized and signed by Drew) to the PM to get CO/COR signature.</p><p>The document now carries AmeriTech's own signature and heads back out to the PM so the CO/COR signature can be collected next.</p>"}, "m9": {"title": "Cashmere/Sue Follow Up on CO/COR Signature", "tag": "26th\u201330/31st (5-6 days)", "kind": "process", "bodyHtml": "<p>Cashmere/Sue follows up with PMs to see where the status in obtaining a CO/COR signature on their AIA Pen Req.</p><p>With only 5&ndash;6 days left before month end, this follow-up is what keeps a stalled signature from becoming a late invoice.</p>"}, "m10": {"title": "AIA Pen Req Signed by CO/COR", "tag": "26th\u201330/31st (5-6 days)", "kind": "process", "bodyHtml": "<p>AIA Pen Req is signed by CO/COR.</p>"}, "m11": {"title": "PM Sends Signed AIA Invoice to Cashmere/Sue", "tag": "26th\u201330/31st (5-6 days)", "kind": "process", "bodyHtml": "<p>PM sends CO/COR signed AIA Invoice (Pen Req) to Cashmere/Sue.</p><p>This is the last handoff before the invoice goes into the billing platform &mdash; the SOP target is the 29th so Cashmere/Sue still have time to upload before month end.</p>"}, "m12": {"title": "Cashmere/Sue Upload Signed AIA to Billing Platform", "tag": "26th\u201330/31st (5-6 days)", "kind": "process", "bodyHtml": "<p>Cashmere/Sue uploaded the signed AIA to Billing Platform.</p>"}, "m13": {"title": "Cashmere/Sue Send Upload Notification Email", "tag": "26th\u201330/31st (5-6 days)", "kind": "process", "bodyHtml": "<p>Cashmere/Sue sends email to PM, CO/COR/CS, Project Executives, Mike P letting them know the AIA Invoice was uploaded to Billing Platform.</p><p>This closes the loop for everyone who touched the package this month before the final 48-hour check on Tungsten.</p>"}, "m14": {"title": "Cashmere/Sue Check Billing Platform (48-Hour Follow-Up)", "tag": "48-hour follow-up", "kind": "process", "bodyHtml": "<p>Cashmere/Sue to check Billing Platforms after uploading the invoice. Cashmere/Sue to follow up with CO/COR/CS if the invoice has been sitting in received status for too long on Tungsten.</p><p>This is the last checkpoint in the cycle &mdash; catching an invoice stuck in Received status here is what keeps payment approval from slipping into next month.</p><div class=\"modal-gallery\"><figure><img src=\"../assets/img/89cc6002fa4e.webp\" alt=\"Training slide \u2014 month-end closeout checklist\"><figcaption>Training slide \u2014 month-end closeout checklist</figcaption></figure></div>"}, "m15": {"title": "AIA Invoice Gets Approval for Payment", "tag": "End", "kind": "terminal", "bodyHtml": "<p>AIA Invoice get approval for payment.</p><p>This closes the monthly cycle &mdash; the next AIA template drafted for the following month restarts the process at the top.</p>"}, "w1": {"title": "Schedule the Walkthrough", "tag": "Superintendent path", "kind": "process", "bodyHtml": "<p>PM, Superintendent, and VA will coordinate to schedule a walkthrough.</p><p>This is the first step of the walkthrough &amp; revision loop, triggered each month once PM and Superintendent begin working the COR buy-in (see &ldquo;PM Works with Superintendent on COR Buy In&rdquo;).</p>"}, "w2": {"title": "PM Sends the Pencil Requisition", "tag": "Superintendent path", "kind": "process", "bodyHtml": "<p>PM will send the pencil requisition to Superintendent.</p>"}, "w3": {"title": "Superintendent Walks the Site", "tag": "Superintendent path", "kind": "process", "bodyHtml": "<p>Superintendent will walk through the site and discuss percentages in terms of what activities has been completed in this billing period.</p><p>This is the field verification that either confirms or challenges what the PM marked up earlier in the month, using the same evidence trail (photos, logs, field measurements) as the initial review.</p><div class=\"modal-gallery\"><figure><img src=\"../assets/img/09ff8688af52.webp\" alt=\"Training slide \u2014 preparing for and documenting the COR walkthrough\"><figcaption>Training slide \u2014 preparing for and documenting the COR walkthrough</figcaption></figure></div><div class=\"modal-gallery\"><figure><img src=\"../assets/img/2cfd2b8cc813.webp\" alt=\"Training slide \u2014 field evidence supporting the billed percentages\"><figcaption>Training slide \u2014 field evidence supporting the billed percentages</figcaption></figure></div>"}, "w4": {"title": "Superintendent Discusses with PM", "tag": "Superintendent path", "kind": "process", "bodyHtml": "<p>Superintendent will discuss with PM.</p>"}, "w5": {"title": "PM Revises AIA & Gets COR Approval", "tag": "Superintendent path", "kind": "process", "bodyHtml": "<p>PM wil revise AIA if necessary, and email back to COR for approval. COR will send an email back approving the revised pen req.</p><p>This revised, COR-approved buy-in is what feeds back into &ldquo;PM and Superintendent receives COR Buy In.&rdquo;</p>"}, "cheatsheet": {"title": "AIA Monthly Billing \u2014 Deadline Cheat Sheet & Checklist", "tag": "Reference", "kind": "reference", "bodyHtml": "\n<p><b>Billing rule:</b> Only completed work is invoiced. Incomplete work moves to next month's invoice.</p>\n<table class=\"cheat-table\"><thead><tr><th>Date</th><th>Owner</th><th>Required action</th><th>Proof / output</th></tr></thead><tbody><tr><td class=\"date-cell\">1st\u201319th</td><td class=\"owner-cell\">PM/APM + Superintendent</td><td>Track completed work; keep Daily Logs, documentation, and Three-Week Lookahead current.</td><td>Current records</td></tr><tr><td class=\"date-cell\">19th</td><td class=\"owner-cell\">PM/APM + Superintendent</td><td>Complete joint billing review; agree on complete work and supportable percentages.</td><td>Agreed percentages + exception list</td></tr><tr><td class=\"date-cell\">20th</td><td class=\"owner-cell\">PM/APM</td><td>Receive/review subcontractor invoices and CPRs; complete Pen Req; send to Mike for QC.</td><td>QC submission</td></tr><tr><td class=\"date-cell\">21st</td><td class=\"owner-cell\">Superintendent</td><td>After Mike's approval, contact COR and schedule the billing walkthrough with PM awareness.</td><td>Walkthrough scheduled</td></tr><tr><td class=\"date-cell\">By 23rd</td><td class=\"owner-cell\">PM + Superintendent + COR</td><td>Complete Government/COR walkthrough and review completed work and billing percentages.</td><td>COR feedback documented</td></tr><tr><td class=\"date-cell\">Same day</td><td class=\"owner-cell\">Superintendent \u2192 PM</td><td>Send approvals, questions, percentage changes, and any items to remove or revise.</td><td>Complete feedback sent</td></tr><tr><td class=\"date-cell\">24th</td><td class=\"owner-cell\">PM/APM + Superintendent</td><td>Complete revisions, resolve all COR comments, and confirm final CO/COR buy-in.</td><td>Final buy-in</td></tr><tr><td class=\"date-cell\">25th\u201327th</td><td class=\"owner-cell\">PM/APM + Cashmere/Sue</td><td>25th approved Pen Req to Cashmere/Sue; 26th notarization/Drew signature; 27th AIA to CO/COR.</td><td>Final AIA out for signature</td></tr><tr><td class=\"date-cell\">29th</td><td class=\"owner-cell\">PM/APM</td><td>Return CO/COR-signed AIA to Cashmere.</td><td>Signed AIA received</td></tr><tr><td class=\"date-cell\">Last business day + 48h</td><td class=\"owner-cell\">Cashmere/Sue</td><td>Upload to Tungsten; within 48 hours verify movement and follow up if still in Received status.</td><td>Upload + status confirmation</td></tr></tbody></table>\n<div class=\"cheat-role-summary\">\n  <div><b>PM/APM</b><br>Control the package through CO/COR signature and return the signed AIA to Cashmere by the 29th.</div>\n  <div><b>Superintendent</b><br>Verify field completion, secure COR buy-in, and deliver all feedback to PM by the 24th.</div>\n</div>\n<div class=\"cheat-domino\"><b>Domino warning:</b> Missing records &rarr; late Pen Req/QC &rarr; late walkthrough/buy-in &rarr; compressed signatures &rarr; delayed upload and payment processing. Escalate early with the risk, impact, owner, due time, and recovery plan.</div>\n<div class=\"modal-gallery\"><figure><img src=\"../assets/img/94a723b64e3c.webp\" alt=\"Training slide \u2014 the six monthly control windows\"><figcaption>Training slide \u2014 the six monthly control windows</figcaption></figure></div>\n<div class=\"modal-gallery\"><figure><img src=\"../assets/img/c6000e34c1ce.webp\" alt=\"Training slide \u2014 how a missed 19th/20th domino cascades\"><figcaption>Training slide \u2014 how a missed 19th/20th domino cascades</figcaption></figure></div>\n<div class=\"modal-gallery\"><figure><img src=\"../assets/img/05c81df81bf1.webp\" alt=\"Training slide \u2014 three most common misses\"><figcaption>Training slide \u2014 three most common misses</figcaption></figure></div>\n<button type=\"button\" class=\"cheat-download\" data-filename=\"AIA_Monthly_Billing_Deadline_Cheat_Sheet_Checklist.docx\" data-mime=\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\" data-href=\"../assets/docs/AIA_Monthly_Billing_Deadline_Cheat_Sheet_Checklist.docx\">\n  <svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M8 2v8.5M8 10.5 4.8 7.3M8 10.5l3.2-3.2\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M2.5 12.5v1a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-1\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\"/></svg>\n  Download the original checklist (.docx)\n</button>\n"}, "sop_pm": {"title": "AIA Monthly Billing Process \u2014 PM/APM", "tag": "Reference \u00b7 Step-by-Step Guide", "kind": "reference", "bodyHtml": "<p class=\"sop-intro\">Billing Rule: Only work completed by the billing cutoff is invoiced. If it is not complete, it moves to the next month's invoice.</p><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">1. Track Project Progress</div><span class=\"sop-due\">Ongoing \u2013 1st through 19th</span></div><ul><li>PM and Superintendent track completed work.</li><li>Keep Daily Logs, project documentation, and Three-Week Lookaheads current.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">2. Collect &amp; Review Subcontractor Invoices</div><span class=\"sop-due\">No Later Than the 20th</span></div><ul><li>Review subcontractor invoices as they come in.</li><li>Confirm invoices match work completed onsite.</li><li>All subcontractor invoices must be received by the 20th.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">3. Collect CPRs</div><span class=\"sop-due\">With Subcontractor Invoices / No Later Than the 20th</span></div><ul><li>Collect required Certified Payroll Reports (CPRs) as invoices come in.</li><li>Follow up immediately on missing CPRs.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">4. Review Completed Work with Superintendent</div><span class=\"sop-due\">19th</span></div><ul><li>PM and Superintendent review what is actually complete.</li><li>Confirm subcontractor billing matches field progress.</li><li>Identify anything that should not be billed.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">5. Prepare the Pencil Requisition</div><span class=\"sop-due\">20th</span></div><ul><li>Include completed work only.</li><li>Work not complete by the billing cutoff moves to the next invoice.</li><li>Confirm billing percentages are accurate.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">6. Complete Superintendent Review</div><span class=\"sop-due\">20th</span></div><ul><li>PM and Superintendent complete a final review of the Pen Req.</li><li>Make corrections before submitting for QC.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">7. Send Pen Req to Mike for QC</div><span class=\"sop-due\">20th</span></div><ul><li>PM sends the completed Pen Req to Mike.</li><li>Address any corrections from QC.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">8. Complete Government Walkthrough</div><span class=\"sop-due\">21st</span></div><ul><li>PM and Superintendent review completed work with the Government.</li><li>Confirm billing percentages.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">9. Make Government-Requested Revisions</div><span class=\"sop-due\">22nd</span></div><ul><li>PM makes any agreed-upon changes.</li><li>Send revised Pen Req back to the Government if needed.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">10. Obtain CO/COR Buy-In</div><span class=\"sop-due\">24th</span></div><ul><li>Resolve any remaining billing questions.</li><li>Obtain Government agreement on billing percentages.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">11. Send Approved Pen Req to Cashmere/Sue</div><span class=\"sop-due\">25th</span></div><ul><li>PM sends the approved Pen Req for final processing.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">12. Notarization &amp; Drew's Signature</div><span class=\"sop-due\">26th</span></div><ul><li>Cashmere/Sue coordinates:</li><li>Notarization</li><li>Drew's signature</li><li>Return of AIA to PM</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">13. Send AIA for CO/COR Signature</div><span class=\"sop-due\">27th</span></div><ul><li>PM sends the finalized AIA to the Government for signature.</li><li>PM follows up until received.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">14. Return Signed AIA to Cashmere</div><span class=\"sop-due\">29th</span></div><ul><li>PM sends the CO/COR-signed AIA back to Cashmere.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">15. Upload AIA to Tungsten</div><span class=\"sop-due\">Last Business Day of the Month</span></div><ul><li>Cashmere uploads the completed AIA to Tungsten.</li><li>Submission confirmation is sent to the appropriate team.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">16. Check Invoice Status</div><span class=\"sop-due\">Within 48 Hours of Upload</span></div><ul><li>Cashmere checks Tungsten to confirm the invoice is moving through approval.</li><li>Follow up with the appropriate Government contact if it remains in Received status.</li></ul></div><div class=\"sop-summary\"><b>Monthly Deadlines to Remember</b><ul style=\"list-style:none;padding-left:0;\"><li><span class=\"sop-due\">19th</span> PM + Superintendent billing review complete</li><li><span class=\"sop-due\">20th</span> Sub invoices/CPRs due + Pen Req completed + sent to Mike</li><li><span class=\"sop-due\">21st</span> Government walkthrough complete</li><li><span class=\"sop-due\">22nd</span> Government revisions complete</li><li><span class=\"sop-due\">24th</span> CO/COR buy-in complete</li><li><span class=\"sop-due\">25th</span> Approved Pen Req to Cashmere/Sue</li><li><span class=\"sop-due\">26th</span> Notarization + Drew's signature</li><li><span class=\"sop-due\">27th</span> AIA sent for Government signature</li><li><span class=\"sop-due\">29th</span> Signed AIA returned to Cashmere</li><li><span class=\"sop-due\">Last Business Day</span> AIA uploaded to Tungsten</li><li><span class=\"sop-due\">Within 48 Hours</span> Invoice status checked</li></ul></div><button type=\"button\" class=\"cheat-download\" data-filename=\"AIA_Monthly_Billing_Process-PM.APM.docx\" data-mime=\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\" data-href=\"../assets/docs/AIA_Monthly_Billing_Process-PM.APM.docx\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M8 2v8.5M8 10.5 4.8 7.3M8 10.5l3.2-3.2\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M2.5 12.5v1a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-1\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\"/></svg>Download the original SOP (AIA_Monthly_Billing_Process-PM.APM.docx)</button>"}, "sop_super": {"title": "AIA Monthly Billing Process \u2014 Superintendent", "tag": "Reference \u00b7 Step-by-Step Guide", "kind": "reference", "bodyHtml": "<p class=\"sop-intro\"><b>Superintendent's Role</b><br>The Superintendent is responsible for verifying completed work in the field, scheduling and performing the COR buy-in, and communicating any changes back to the PM.</p><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">1. Track Completed Work</div><span class=\"sop-due\">Ongoing \u2013 1st through 19th </span></div><ul><li>Keep Daily Logs current.</li><li>Track subcontractor progress.</li><li>Keep the Three-Week Lookahead current.</li><li>Know what work is complete onsite.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">2. Review Billing with PM</div><span class=\"sop-due\">19th</span></div><ul><li>Review completed work with the PM.</li><li>Confirm subcontractor progress.</li><li>Make sure billing percentages match actual field conditions.</li><li>Identify anything that is not complete.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">3. Confirm Pen Req with PM</div><span class=\"sop-due\">20th</span></div><ul><li>Review the Pen Req with the PM before it is sent to Mike Paquet for QC.</li><li>Confirm percentages accurately reflect completed work.</li><li>If work is not complete by the billing cutoff, it moves to the next invoice.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">4. Wait for QC Approval</div><span class=\"sop-due\">20th</span></div><ul><li>PM sends the Pen Req to Mike Paquet for QC.</li><li>Do not schedule the final COR buy-in until the Pen Req has been approved by Mike.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">5. Schedule COR Buy-In</div><span class=\"sop-due\">21st</span></div><ul><li>Once Mike approves the Pen Req:</li><li>Contact the COR.</li><li>Schedule the billing walkthrough/buy-in.</li><li>Coordinate with the PM so they know when the walkthrough will occur.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">6. Perform COR Buy-In</div><span class=\"sop-due\">No Later Than the 23rd</span></div><ul><li>Walk the project with the COR and review:</li><li>Completed work</li><li>Percent complete</li><li>Billing percentages</li><li>Confirm whether the COR agrees with the percentages shown on the Pen Req.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">7. Send COR Feedback to PM</div><span class=\"sop-due\">Same Day as Buy-In</span></div><ul><li>Immediately communicate the results to the PM.</li><li>Tell the PM:</li><li>What the COR approved</li><li>What the COR questioned</li><li>Any percentage changes</li><li>Any items that need to be removed or revised</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">8. PM Revises Pen Req, If Needed</div><span class=\"sop-due\">24th</span></div><ul><li>PM makes any necessary revisions based on the COR buy-in.</li><li>Superintendent provides clarification if needed.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">9. Confirm Final Buy-In</div><span class=\"sop-due\">24th</span></div><ul><li>Confirm all COR comments have been addressed.</li><li>Make sure the PM has the information needed to finalize the Pen Req.</li><li>The Superintendent\u2019s responsibility is complete once COR buy-in is confirmed and all feedback has been provided to the PM.</li></ul></div><div class=\"sop-summary\"><b>Superintendent Deadlines</b><ul style=\"list-style:none;padding-left:0;\"><li><span class=\"sop-due\">19th</span> Review completed work with PM</li><li><span class=\"sop-due\">20th</span> Confirm Pen Req before QC</li><li><span class=\"sop-due\">21st</span> Schedule COR buy-in after Mike's approval</li><li><span class=\"sop-due\">23rd</span> COR buy-in completed</li><li><span class=\"sop-due\">Same Day</span> Send COR feedback to PM</li><li><span class=\"sop-due\">24th</span> All COR comments resolved</li><li><span class=\"sop-due\">Remember</span> Verify \u2192 Schedule \u2192 Walk \u2192 Communicate</li></ul><p>Your responsibility is to make sure the percentage completed on the AIA reflects what is actually complete in the field and that the PM receives all information from the COR buy-in in time to finalize the billing.</p></div><button type=\"button\" class=\"cheat-download\" data-filename=\"AIA_Monthly_Billing_Process-Superintendent.docx\" data-mime=\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\" data-href=\"../assets/docs/AIA_Monthly_Billing_Process-Superintendent.docx\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M8 2v8.5M8 10.5 4.8 7.3M8 10.5l3.2-3.2\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M2.5 12.5v1a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-1\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\"/></svg>Download the original SOP (AIA_Monthly_Billing_Process-Superintendent.docx)</button>"}};
+const STEP_ORDER = ["m1", "m2", "m2b", "m3", "m4", "m5", "w1", "w2", "w3", "w4", "w5", "m6", "m7", "m8", "m9", "m10", "m11", "m12", "m13", "m14", "m15"];
+
+const overlay = document.getElementById('modalOverlay');
+const modalBox = document.getElementById('modalBox');
+const modalTag = document.getElementById('modalTag');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalPrev = document.getElementById('modalPrev');
+const modalNext = document.getElementById('modalNext');
+
+let currentId = null;
+let lastFocused = null;
+
+function renderStep(id) {
+  const data = STEP_DATA[id];
+  if (!data) return;
+  currentId = id;
+  modalTag.textContent = data.tag;
+  modalTag.className = 'modal-tag tag-' + data.kind;
+  modalTitle.textContent = data.title;
+  modalBody.innerHTML = data.bodyHtml;
+  modalBox.classList.toggle('modal-wide', data.kind === 'reference');
+
+  const idx = STEP_ORDER.indexOf(id);
+  modalPrev.disabled = idx <= 0;
+  modalNext.disabled = idx === -1 || idx >= STEP_ORDER.length - 1;
+  modalPrev.closest('.modal-nav').style.display = idx === -1 ? 'none' : 'flex';
+  modalBox.scrollTop = 0;
+}
+
+function openModal(id) {
+  lastFocused = document.activeElement;
+  renderStep(id);
+  overlay.classList.add('open');
+  modalBox.focus();
+  document.addEventListener('keydown', onKeydown);
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.removeEventListener('keydown', onKeydown);
+  if (lastFocused) lastFocused.focus();
+}
+
+function onKeydown(e) {
+  if (e.key === 'Escape') {
+    if (lightboxOverlay.classList.contains('open')) { closeLightbox(); return; }
+    closeModal();
+    return;
+  }
+  if (lightboxOverlay.classList.contains('open')) return;
+  if (e.key === 'ArrowRight' && !modalNext.disabled) step(1);
+  if (e.key === 'ArrowLeft' && !modalPrev.disabled) step(-1);
+}
+
+const lightboxOverlay = document.getElementById('lightboxOverlay');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCaption = document.getElementById('lightboxCaption');
+let lightboxLastFocused = null;
+
+function openLightbox(src, caption) {
+  lightboxLastFocused = document.activeElement;
+  lightboxImg.src = src;
+  lightboxImg.alt = caption || '';
+  lightboxCaption.textContent = caption || '';
+  lightboxOverlay.classList.add('open');
+}
+
+function closeLightbox() {
+  lightboxOverlay.classList.remove('open');
+  lightboxImg.src = '';
+  if (lightboxLastFocused) lightboxLastFocused.focus();
+}
+
+modalBody.addEventListener('click', (e) => {
+  const img = e.target.closest('.modal-gallery img');
+  if (img) {
+    const caption = img.closest('figure')?.querySelector('figcaption')?.textContent || img.alt || '';
+    openLightbox(img.src, caption);
+    return;
+  }
+  const dl = e.target.closest('.cheat-download');
+  if (dl) downloadAttachment(dl);
+});
+
+function downloadAttachment(btn) {
+  // App build: the file is a real asset (cached offline); on a phone this
+  // opens the share sheet so it can be saved to Files, mailed, or opened in Word.
+  window.AmeriTechApp.shareFile(btn.getAttribute('data-href'),
+    btn.getAttribute('data-filename'), btn.getAttribute('data-mime'));
+}
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightboxImg.addEventListener('click', closeLightbox);
+lightboxOverlay.addEventListener('click', (e) => { if (e.target === lightboxOverlay) closeLightbox(); });
+
+function step(dir) {
+  const idx = STEP_ORDER.indexOf(currentId);
+  const nextIdx = idx + dir;
+  if (nextIdx >= 0 && nextIdx < STEP_ORDER.length) renderStep(STEP_ORDER[nextIdx]);
+}
+
+function fitNodeText() {
+  document.querySelectorAll('.fo-wrap').forEach(wrap => {
+    const main = wrap.querySelector('.fo-main');
+    const sub = wrap.querySelector('.fo-sub');
+    if (!main) return;
+    const isDecision = wrap.closest('.node-decision') !== null;
+    let mainSize = isDecision ? 18.5 : 21, subSize = 15;
+    main.style.fontSize = mainSize + 'px';
+    if (sub) sub.style.fontSize = subSize + 'px';
+    let guard = 50;
+    while (wrap.scrollHeight > wrap.clientHeight + 1 && mainSize > 8 && guard > 0) {
+      mainSize -= 0.6;
+      subSize -= 0.44;
+      main.style.fontSize = mainSize + 'px';
+      if (sub) sub.style.fontSize = Math.max(subSize, 7) + 'px';
+      guard--;
+    }
+  });
+}
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(fitNodeText).catch(fitNodeText);
+} else {
+  fitNodeText();
+}
+window.addEventListener('load', fitNodeText);
+setTimeout(fitNodeText, 350);
+
+document.querySelectorAll('.node').forEach(el => {
+  const id = el.getAttribute('data-step');
+  el.addEventListener('click', () => openModal(id));
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(id); }
+  });
+});
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+const cheatBtn = document.getElementById('cheatSheetBtn');
+if (cheatBtn) cheatBtn.addEventListener('click', () => openModal('cheatsheet'));
+const sopPmBtn = document.getElementById('sopPmBtn');
+if (sopPmBtn) sopPmBtn.addEventListener('click', () => openModal('sop_pm'));
+const sopSuperBtn = document.getElementById('sopSuperBtn');
+if (sopSuperBtn) sopSuperBtn.addEventListener('click', () => openModal('sop_super'));
+modalPrev.addEventListener('click', () => step(-1));
+modalNext.addEventListener('click', () => step(1));
+
+</script>
+
+<a class="app-home" href="./" aria-label="Back to all workflows"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Workflows</a>
+
+<link rel="stylesheet" href="../assets/workflow-fixes.css">
+<script src="../assets/workflow-fixes.js"></script>
+<a class="hub-return" href="../#resources">AmeriVerse Hub →</a>

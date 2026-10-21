@@ -1,0 +1,3 @@
+Chromium: first install, waiting update, user activation, old-cache cleanup and offline resume passed.
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+WebKit: first install, waiting update, user activation, old-cache cleanup and offline resume passed.

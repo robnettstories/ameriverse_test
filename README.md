@@ -1,14 +1,54 @@
-# AmeriVerse Data Sphere v0.4
+# AmeriVerse Hub
 
-A static, standalone interactive concept demo for AmeriTech Contracting. All data is synthetic.
+A responsive, static proof of concept for AmeriTech Contracting. Projects, customers, employees, vendors, benchmarks and financial records are synthetic. Procore and Sage Intacct are not connected. Tasks, inspections and staffing allocations are local demo interactions.
 
-## Publish using GitHub Pages
+Live site: https://robnettstories.github.io/ameriverse_test/
 
-1. Create a new repository (prefer a company-approved repository).
-2. Upload `index.html` and `.nojekyll` at the repository root.
-3. Open **Settings → Pages**, choose **Deploy from a branch**, select `main` and `/ (root)`, and save.
-4. Wait for the deployment to finish and open the Pages URL shown in Settings.
+## Explore
 
-**Security:** GitHub Pages sites are publicly accessible. This demonstration includes no live operational data. Do not add confidential project information, employee data, API tokens, or internal documents.
+- **Executive:** nationwide portfolio filters, recovery at comparable progress, project billing and observation records, finite staffing allocations, weekly cash and a local prevention queue.
+- **Job Site:** project health, weighted PM capacity, manpower and qualifications, equipment, observations normalized by labor hours, and a transparent proposed subcontractor index with human-review indicators.
+- **Employee Resources:** searchable supplied workflows for AIA billing by date, AIA billing flow, subcontract buyout and the APM lifecycle; original DOCX downloads and illustrative learning profiles.
+- **Insights Studio:** explicitly labeled future concept, invented benchmarks, decided-bid metrics and a separate fictional client report. Internal portfolio records are not exposed through the concept.
+- **Connected Enterprise:** the original data sphere at `connected-enterprise.html`.
 
-**Brand:** Uses an AmeriTech-inspired dark navy, white and red treatment; verify official brand color codes and logo assets with marketing before formal release.
+Suggested walkthrough: open the $40M Federal Medical Center at 62% completion and compare Coastal Facilities Services at 64%. In Cash & capacity, allocate 1 APM FTE to each of Federal Medical and Pacific Research, then allocate the single billing FTE. Review submission and collection dates, PM load, weekly receipts, AP payments and assumptions; reset. Finish with the owner-filtered action queue.
+
+## Run and verify
+
+Requires Node.js 18+ and Python 3. No package installation or runtime dependencies are needed.
+
+```sh
+npm start
+npm test
+npm run build
+```
+
+Open http://localhost:8001/. The build validates local references, including workflow content, and regenerates the scoped, content-versioned service worker. Rebuild after application changes. GitHub Pages serves the repository root; no distribution folder is needed.
+
+Browser checks require Playwright with Chromium and WebKit installed:
+
+```sh
+PLAYWRIGHT_MODULE=/path/to/node_modules/playwright npm run test:browser
+PLAYWRIGHT_MODULE=/path/to/node_modules/playwright node tests/worker-update.cjs
+```
+
+The runner uses `/usr/bin/chromium`; set `CHROMIUM_PATH` when needed. `BASE_URL` selects another hosting URL, `QA_OUTPUT` selects the evidence folder, `ONLY_ENGINE` selects Chromium or WebKit, and `SKIP_PERF=1` skips the separate Chromium simulation. Default `test-results/` output is ignored by Git. Browser tooling is not shipped to visitors.
+
+## Data and assumptions
+
+`assets/model.js` owns the synthetic data and calculations; `assets/hub.js` renders the portals. Dollar amounts reconcile gross invoices to collected cash, open balances and retainage. Paid cycle times use paid invoice amounts; unpaid balances show days since invoice. The 12-week forecast combines $2.60M opening cash, assumed receipts, progress-based future project costs, incurred AP commitments and $310,000 weekly enterprise costs. Existing retainage and unapproved changes are excluded from receipts.
+
+The forecast is a conservative illustration of current receivables and eligible existing unbilled work. It does not assume collections from future earned work, a credit facility or new awards. Staffing changes timing; it does not create revenue or guarantee recovery. Negative cash illustrates a funding need. Definitions and denominators are available in the app.
+
+The incremental support pool contains 2.0 APM FTE and 1.0 billing FTE. Controls conserve both pools; existing APM commitments are separately counted. Saved scenarios and completed tasks use local device storage and have reset controls.
+
+## Supplied materials
+
+The logo, fonts, icons, workflow content, screenshots and DOCX files come from `AmeriTech-Workflows-App.zip`. Workflows retain supplied content, with local asset paths and hub navigation adapted. Shared fixes provide 44-pixel close/previous/next controls, initial focus, focus containment, return focus, safe areas and reduced-motion handling. The untouched reference remains outside this checkout.
+
+## Offline and updates
+
+The manifest includes regular, maskable and Apple touch icons. On HTTPS or localhost, a service worker caches the synthetic app and workflows after initial installation. Caches are scoped to the site's path and versioned from application content and worker behavior. A waiting update offers a reload button; activation clears only this site's older caches.
+
+See `QA-REPORT.md` for browser evidence and limits. Native iOS sharing, Home Screen installation, resume and hardware responsiveness require a physical iPhone/iPad check before a CEO presentation.

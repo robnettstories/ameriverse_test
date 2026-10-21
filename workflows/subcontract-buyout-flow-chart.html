@@ -1,0 +1,1324 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Workflows">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/app.css">
+<script src="../assets/app.js" defer></script>
+<meta name="app-docs" content="../assets/docs/Buyout_Process.docx">
+<script>document.documentElement.setAttribute("data-boxstyle","light");</script>
+<title>Subcontract Buyout Workflow</title>
+<style>
+  :root {
+    --bg: #EEF1F3;
+    --surface: #FFFFFF;
+    --ink: #0C273C;
+    --muted: #5B6B7C;
+    --rule: #D6DCE2;
+    --magenta: #AF2838;
+    --blue: #0C273C;
+    --blue-alt: #3D6088;
+    --orange: #171C22;
+    --decision-text: #FFFFFF;
+    --gray: #8792A0;
+    --edge-label: #AF2838;
+    --ring: #AF2838;
+  --start: #1B7F4B;
+  --decision: #A8751A;
+  --end: #AF2838;
+    --start: #1B7F4B;
+    --decision: #A8751A;
+  --decision: #A8751A;
+    --end: #AF2838;
+    --shadow: 0 18px 44px -18px rgba(12, 39, 60, 0.35);
+    --overlay: rgba(12, 39, 60, 0.55);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #FFFFFF;
+      --surface: #FFFFFF;
+      --ink: #0C273C;
+      --muted: #5B6B7C;
+      --rule: #D6DCE2;
+      --magenta: #AF2838;
+      --blue: #0C273C;
+      --blue-alt: #3D6088;
+      --orange: #171C22;
+      --decision-text: #FFFFFF;
+      --gray: #8792A0;
+      --edge-label: #AF2838;
+      --ring: #AF2838;
+  --start: #1B7F4B;
+  --decision: #A8751A;
+  --end: #AF2838;
+    --start: #1B7F4B;
+    --decision: #A8751A;
+  --decision: #A8751A;
+    --end: #AF2838;
+      --overlay: rgba(12, 39, 60, 0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --ink: #0C273C;
+    --muted: #5B6B7C;
+    --rule: #D6DCE2;
+    --magenta: #AF2838;
+    --blue: #0C273C;
+    --blue-alt: #3D6088;
+    --orange: #171C22;
+    --decision-text: #FFFFFF;
+    --gray: #8792A0;
+    --edge-label: #AF2838;
+    --ring: #AF2838;
+  --start: #1B7F4B;
+  --decision: #A8751A;
+  --end: #AF2838;
+    --start: #1B7F4B;
+    --decision: #A8751A;
+  --decision: #A8751A;
+    --end: #AF2838;
+    --overlay: rgba(12, 39, 60, 0.55);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+    padding-inline: 18px;
+    padding-block: 26px;
+  }
+  h1, h2, .edge-label, .fo-main {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  }
+  .wrap { max-width: 1600px; margin: 0 auto; }
+
+  header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .brand-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-badge {
+    flex: none;
+    height: 56px;
+    padding: 8px 14px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--rule);
+  }
+  .logo-badge img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+  .title-block h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: 0.01em;
+  }
+  .title-block p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .hint {
+    font-size: 12.5px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hint svg { flex: none; opacity: 0.8; }
+
+  .toolbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .reminders-banner {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--magenta);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+  }
+  .reminders-banner-title {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    color: var(--magenta);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .reminders-banner-body ul {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 32px;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .reminders-banner-body li {
+    margin-bottom: 6px;
+    break-inside: avoid;
+  }
+  .reminders-banner-body .k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.86em;
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  @media (max-width: 720px) {
+    .reminders-banner-body ul { columns: 1; }
+  }
+  .cheat-banner {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--magenta);
+    border-radius: 12px;
+    padding: 14px 16px 14px 20px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cheat-banner-title {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    color: var(--magenta);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .cheat-banner-body { font-size: 13.5px; color: var(--muted); }
+  .cheat-btn {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: #FFFFFF;
+    border: none;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: filter 0.15s ease;
+  }
+  .cheat-btn:hover { filter: brightness(1.12); }
+  .cheat-btn:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 2px; }
+  .cheat-btn-group { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  .cheat-btn.cheat-btn-alt { background: var(--blue-alt); }
+  .sop-step { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .sop-step:last-of-type { border-bottom: none; }
+  .sop-step-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+  .sop-step-title { font-weight: 700; font-size: 14.5px; }
+  .sop-due { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; color: var(--blue); background: color-mix(in srgb, var(--blue) 12%, transparent); padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .sop-intro { font-size: 13.5px; color: var(--muted); margin-bottom: 16px; }
+  .sop-summary { margin-top: 18px; padding: 12px 14px; border-radius: 10px; background: color-mix(in srgb, var(--blue) 7%, transparent); font-size: 12.5px; line-height: 1.6; }
+  .sop-summary b { display: block; margin-bottom: 6px; font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.03em; font-size: 12px; color: var(--blue); }
+  .modal-tag.tag-reference { background: color-mix(in srgb, var(--magenta) 20%, transparent); color: var(--magenta); }
+  .cheat-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 4px; }
+  .cheat-table th, .cheat-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .cheat-table th { font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  .cheat-table td.date-cell { font-weight: 700; color: var(--blue); white-space: nowrap; }
+  .cheat-table td.owner-cell { color: var(--muted); }
+  .cheat-role-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  @media (max-width: 640px) { .cheat-role-summary { grid-template-columns: 1fr; } }
+  .cheat-role-summary div {
+    background: color-mix(in srgb, var(--blue) 7%, transparent);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .cheat-domino {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--magenta) 10%, transparent);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .cheat-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: none;
+    cursor: pointer;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .cheat-download:hover { text-decoration: underline; }
+  .cheat-download:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 2px; }
+
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+  .sw.magenta { background: var(--magenta); }
+  .sw.blue { background: var(--blue); }
+  .sw.orange { background: var(--orange); }
+  .sw.blue-alt { background: var(--blue-alt); }
+
+  .diagram-outer {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+  }
+  .diagram-frame {
+    position: relative;
+    z-index: 1;
+    background: none;
+    border-radius: 14px;
+    padding: 16px;
+    overflow-x: auto;
+  }
+  .diagram-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46%;
+    min-width: 340px;
+    max-width: 680px;
+    height: auto;
+    opacity: 0.18;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .flow-svg {
+    width: 100%;
+    height: auto;
+    min-width: 1150px;
+    display: block;
+    overflow: visible;
+  }
+
+  .node { cursor: pointer; outline: none; }
+  .node:focus { outline: none; }
+  .node-process-shape, .node-process-alt-shape { fill: var(--blue); }
+  .node-process-alt-shape { fill: var(--blue-alt); }
+  .node-terminal-shape { fill: var(--magenta); }
+  .node-decision-shape { fill: var(--orange); }
+
+  .node-ring { stroke: transparent; stroke-width: 0; }
+  .node:focus-visible .node-ring {
+    stroke: var(--ring);
+    stroke-width: 3.6;
+  }
+
+  .fo-wrap {
+    width: 100%;
+    height: 100%;
+    padding: 4px 8px;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    line-height: 1.12;
+    pointer-events: none;
+  }
+  .node-decision .fo-wrap { color: var(--decision-text); }
+  .fo-main { font-weight: 700; font-size: 19px; }
+  .fo-sub { font-weight: 600; font-size: 15px; opacity: 0.92; margin-top: 5px; }
+  .node-decision .fo-main { font-size: 18.5px; }
+
+  /* date tags -- the original's yellow bars, in AmeriTech crimson */
+  .date-tag-shape { fill: var(--magenta); }
+  .date-tag-text {
+    /* no font-size here on purpose: each bar carries its own fitted size */
+    fill: #FFFFFF;
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- Superintendent grouping band (item 3) ---- */
+  .super-band-shape {
+    fill: color-mix(in srgb, var(--blue-alt) 7%, transparent);
+    stroke: var(--blue-alt);
+    stroke-width: 2.5;
+    stroke-dasharray: 14 10;
+  }
+  .super-band-label {
+    fill: var(--blue-alt);
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ---- start / end terminals ---- */
+  .node-start-shape { fill: var(--blue); }
+  .node-end-shape { fill: var(--blue); }
+
+  .conn-super { stroke: var(--blue-alt); stroke-dasharray: 13 10; }
+  .arrowhead-super { fill: var(--blue-alt); }
+
+  .connector {
+    stroke: var(--gray);
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .arrowhead { fill: var(--gray); }
+  .conn-dashed { stroke-dasharray: 13 10; }
+  .conn-trigger { stroke: var(--blue); stroke-width: 3.4; }
+  .arrowhead-trigger { fill: var(--blue); }
+  .conn-loop { stroke: var(--magenta); stroke-width: 3.4; stroke-dasharray: 13 10; }
+  .arrowhead-loop { fill: var(--magenta); }
+
+  .edge-label { fill: var(--edge-label); font-size: 22px; font-weight: 700; font-style: italic;
+    font-family: "Source Sans 3", sans-serif; }
+  .edge-label-trigger { fill: var(--blue); }
+  .edge-label-loop { fill: var(--magenta); }
+
+  .node-process-shape, .node-process-alt-shape, .node-terminal-shape, .node-decision-shape {
+    transition: filter 0.15s ease;
+  }
+  .node:hover .node-process-shape,
+  .node:hover .node-process-alt-shape,
+  .node:hover .node-terminal-shape,
+  .node:hover .node-decision-shape {
+    filter: brightness(1.1);
+  }
+
+  /* ---- section-based timeline layout ---- */
+  .sections {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .section-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 22px;
+    background: var(--blue);
+    color: #fff;
+  }
+  .section-num {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .section-head-text { min-width: 0; }
+  .section-date {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+  }
+  .section-title {
+    font-size: 13.5px;
+    opacity: 0.86;
+    margin-top: 2px;
+  }
+  .section-body { padding: 22px; }
+  .section-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 16px;
+    max-width: 74ch;
+  }
+
+  .chip-row {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 10px 6px;
+  }
+  .chip-lane-label {
+    flex: none;
+    width: 100%;
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blue-alt);
+    margin: 14px 0 2px;
+  }
+  .chip-row + .chip-lane-label { margin-top: 4px; }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: "Source Sans 3", sans-serif;
+    text-align: left;
+    cursor: pointer;
+    max-width: 260px;
+    flex: 1 1 200px;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .chip:hover { filter: brightness(1.12); transform: translateY(-1px); }
+  .chip:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+  .chip-alt { background: var(--blue-alt); }
+  .chip-terminal { background: var(--magenta); }
+  .chip-num {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12.5px;
+  }
+  .chip-label {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.18;
+  }
+  .chip-arrow {
+    flex: none;
+    align-self: center;
+    color: var(--gray);
+    font-size: 20px;
+    line-height: 1;
+    padding: 0 2px;
+  }
+  .chip-arrow.arrow-loop { color: var(--magenta); font-weight: 700; }
+
+  .loop-box {
+    margin: 16px 0 4px;
+    border: 2px dashed var(--blue-alt);
+    border-radius: 12px;
+    padding: 16px 18px;
+    background: color-mix(in srgb, var(--blue-alt) 6%, transparent);
+  }
+  .loop-box-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-bottom: 12px;
+  }
+  .loop-box-title {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--blue-alt);
+  }
+  .loop-box-note { font-size: 12px; color: var(--muted); }
+  .loop-trigger, .loop-return {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    font-style: italic;
+    margin: 6px 0;
+  }
+  .loop-trigger { color: var(--blue); }
+  .loop-return { color: var(--magenta); }
+  .loop-line {
+    flex: none;
+    width: 30px;
+    height: 0;
+    border-top: 2.5px solid var(--blue);
+  }
+  .loop-return .loop-line { border-top: 2.5px dashed var(--magenta); }
+
+  footer.credit {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---- modal ---- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal {
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 14px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 82vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow);
+    padding: 26px 26px 22px;
+    transform: translateY(10px) scale(0.98);
+    transition: transform 0.18s ease;
+  }
+  .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+  .modal.modal-wide { max-width: 780px; }
+  .modal-wide .cheat-table { table-layout: fixed; }
+  .modal-wide .cheat-table col.col-date, .modal-wide .cheat-table th:nth-child(1), .modal-wide .cheat-table td:nth-child(1) { width: 16%; }
+  .modal-wide .cheat-table th:nth-child(2), .modal-wide .cheat-table td:nth-child(2) { width: 23%; }
+  .modal-wide .cheat-table th:nth-child(4), .modal-wide .cheat-table td:nth-child(4) { width: 20%; }
+  .modal-tag {
+    display: inline-block;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .modal-tag.tag-process { background: color-mix(in srgb, var(--blue) 18%, transparent); color: var(--blue); }
+  .modal-tag.tag-decision { background: color-mix(in srgb, var(--orange) 20%, transparent); color: var(--orange); }
+  .modal-tag.tag-terminal { background: color-mix(in srgb, var(--magenta) 20%, transparent); color: var(--magenta); }
+  .modal h2 { font-size: 24px; margin: 0 0 14px; font-weight: 700; }
+  .modal ul { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; }
+  .modal ul li { margin-bottom: 8px; }
+  .modal ul ul { margin-top: 6px; font-size: 13.5px; color: var(--muted); }
+  .modal .k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.86em;
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+  }
+  .modal-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .modal-gallery figure {
+    margin: 0;
+    flex: 1 1 210px;
+    max-width: 280px;
+  }
+  .modal-gallery img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    background: #fff;
+    cursor: zoom-in;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .modal-gallery img:hover {
+    filter: brightness(1.04);
+    transform: translateY(-1px);
+  }
+  .modal-gallery figcaption {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 5px;
+    line-height: 1.3;
+  }
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 14, 22, 0.86);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+    z-index: 1000;
+  }
+  .lightbox-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox-figure {
+    max-width: min(94vw, 1400px);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .lightbox-figure img {
+    max-width: 100%;
+    max-height: 82vh;
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+    background: #fff;
+    cursor: zoom-out;
+  }
+  .lightbox-caption {
+    color: #F2F0EA;
+    font-size: 13.5px;
+    text-align: center;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: #FFFFFF;
+    font-size: 22px;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { background: rgba(255, 255, 255, 0.22); }
+  .lightbox-close:focus-visible { outline: 3px solid var(--magenta); outline-offset: 2px; }
+  @media (max-width: 640px) {
+    .lightbox-overlay { padding: 18px; }
+  }
+  .modal-close:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+  .modal-close:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 1px; }
+  .modal-wrap { position: relative; }
+  .modal-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+  .modal-nav button {
+    background: none;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: "Source Sans 3", sans-serif;
+  }
+  .modal-nav button:hover { border-color: var(--blue); color: var(--blue); }
+  .modal-nav button:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 1px; }
+  .modal-nav button:disabled { opacity: 0.35; cursor: default; }
+  .modal-nav button:disabled:hover { border-color: var(--rule); color: var(--ink); }
+
+  @media (max-width: 640px) {
+    .modal { padding: 22px 18px 18px; }
+    .modal h2 { font-size: 20px; }
+  }
+
+  /* ================= light box variant (data-boxstyle="light") =============
+     White boxes with the colour carried by the outline and the text, so the
+     reader isn't staring at white type on large dark blocks.               */
+  :root[data-boxstyle="light"] .node-process-shape,
+  :root[data-boxstyle="light"] .node-process-alt-shape,
+  :root[data-boxstyle="light"] .node-start-shape,
+  :root[data-boxstyle="light"] .node-end-shape {
+    fill: #FFFFFF;
+    stroke-width: 3;
+  }
+  :root[data-boxstyle="light"] .node-process-shape { stroke: var(--blue); }
+  :root[data-boxstyle="light"] .node-process-alt-shape { stroke: var(--blue-alt); }
+  :root[data-boxstyle="light"] .node-start-shape { stroke: var(--start); stroke-width: 4; }
+  :root[data-boxstyle="light"] .node-end-shape { stroke: var(--end); stroke-width: 4; }
+
+  :root[data-boxstyle="light"] .fo-wrap { color: var(--blue); }
+  :root[data-boxstyle="light"] .node-super .fo-wrap { color: var(--blue-alt); }
+  :root[data-boxstyle="light"] .node-start .fo-wrap { color: var(--start); }
+  :root[data-boxstyle="light"] .node-end .fo-wrap { color: var(--end); }
+
+  :root[data-boxstyle="light"] .node:hover .node-process-shape,
+  :root[data-boxstyle="light"] .node:hover .node-process-alt-shape,
+  :root[data-boxstyle="light"] .node:hover .node-start-shape,
+  :root[data-boxstyle="light"] .node:hover .node-end-shape {
+    filter: none;
+    fill: color-mix(in srgb, var(--blue) 7%, #FFFFFF);
+  }
+
+  /* ---- sticky legend bar (item 4) ---- */
+  .legend-bar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 12px 0 10px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .legend-bar .legend { margin-bottom: 0; }
+  .sw.start { background: var(--start); }
+  .sw.end { background: var(--end); }
+  /* start / end only exist in the light-box copy */
+  :root:not([data-boxstyle="light"]) .legend-start,
+  :root:not([data-boxstyle="light"]) .legend-end { display: none; }
+
+  .expand-btn {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: #FFFFFF;
+    border: none;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .expand-btn:hover { filter: brightness(1.12); }
+  .expand-btn:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 2px; }
+
+  /* ---- full-chart view (item 2) ---- */
+  .diagram-frame { cursor: zoom-in; }
+  .fullview-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--surface);
+    z-index: 40;
+    display: none;
+    flex-direction: column;
+    padding: 14px 18px 18px;
+  }
+  .fullview-overlay.open { display: flex; }
+  .fullview-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 10px;
+  }
+  .fullview-title {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .fullview-inner {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fullview-inner .flow-svg {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    max-height: 100%;
+  }
+  .fullview-close {
+    background: none;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: "Source Sans 3", sans-serif;
+  }
+  .fullview-close:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* bigger, stronger eagle watermark on the light-box copy -- sized by
+     HEIGHT so the whole eagle fits the panel instead of being cropped */
+  :root[data-boxstyle="light"] .diagram-watermark {
+    opacity: 0.26;
+    width: auto;
+    height: 86%;
+    min-width: 0;
+    max-width: 88%;
+  }
+
+  /* decision gate */
+  .node-decision-shape { fill: var(--decision); }
+  .sw.decision { background: var(--decision); }
+  :root[data-boxstyle="light"] .node-decision-shape {
+    fill: #FFFFFF;
+    stroke: var(--decision);
+    stroke-width: 3;
+  }
+  :root[data-boxstyle="light"] .node-decision .fo-wrap { color: var(--decision); }
+  :root[data-boxstyle="light"] .node:hover .node-decision-shape {
+    fill: color-mix(in srgb, var(--decision) 8%, #FFFFFF);
+  }
+  .edge-label-alt { fill: var(--blue-alt); }
+  :root[data-boxstyle="light"] .node-alt .fo-wrap { color: var(--blue-alt); }
+  .fo-sub { font-weight: 600; font-size: 15px; opacity: 0.9; margin-top: 4px; }
+
+  /* this chart's panel is taller than the AIA one -- keep the eagle modest */
+  :root[data-boxstyle="light"] .diagram-watermark {
+    opacity: 0.20;
+    width: auto;
+    height: 52%;
+    max-width: 40%;
+    min-width: 0;
+  }
+
+  /* PO / CO reference card -- a sidebar note, not a step in the flow */
+  .node-info-shape {
+    fill: color-mix(in srgb, var(--magenta) 8%, #FFFFFF);
+    stroke: var(--magenta);
+    stroke-width: 2.5;
+    stroke-dasharray: 10 7;
+  }
+  .node-info .fo-wrap { color: var(--magenta); }
+  .node:hover .node-info-shape { fill: color-mix(in srgb, var(--magenta) 15%, #FFFFFF); }
+  .fo-info-kicker {
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    opacity: 0.75;
+    margin-bottom: 6px;
+  }
+  .fo-info-hint {
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 8px;
+  }
+  .conn-info {
+    stroke: var(--magenta);
+    stroke-width: 2.5;
+    stroke-dasharray: 3 7;
+    opacity: 0.75;
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="brand-block">
+      <span class="logo-badge"><img src="../assets/img/1f50c085c359.webp" alt="AmeriTech Contracting logo"></span>
+      <div class="title-block">
+        <h1>Subcontract Buyout Workflow</h1>
+        <p>AmeriTech Contracting &ndash; from template to fully executed subcontract</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <span class="hint">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1.5c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5S11.6 1.5 8 1.5Z" stroke="currentColor" stroke-width="1.2"/><path d="M8 7.2v4M8 5v.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Click any step for the full detail
+      </span>
+    </div>
+  </header>
+
+  <div class="cheat-banner">
+    <div class="cheat-banner-text">
+      <div class="cheat-banner-title">Reference</div>
+      <div class="cheat-banner-body">The full Buyout Process SOP this workflow is based on.</div>
+    </div>
+    <div class="cheat-btn-group">
+      <button type="button" class="cheat-btn" id="sopBuyoutBtn">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4.5 2h6l2 2v10a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 7.5h5M5.5 10h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Buyout Process SOP
+      </button>
+    </div>
+  </div>
+
+  <div class="legend-bar">
+    <div class="legend">
+      <span class="legend-start"><span class="sw start"></span> Start</span>
+      <span><span class="sw blue"></span> Action step</span>
+      <span><span class="sw decision"></span> Decision point</span>
+      <span><span class="sw blue-alt"></span> Revise &amp; resubmit</span>
+      <span class="legend-end"><span class="sw end"></span> End</span>
+      <span><span class="sw" style="background:color-mix(in srgb, var(--magenta) 12%, #fff);border:2px dashed var(--magenta);width:10px;height:10px;"></span> Reference card (click)</span>
+    </div>
+    <button type="button" class="expand-btn" id="expandBtn">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 2H2v4M10 14h4v-4M14 6V2h-4M2 10v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Full chart view
+    </button>
+  </div>
+
+  <div class="diagram-outer">
+    <img class="diagram-watermark" src="../assets/img/e5af226e2478.webp" alt="">
+  <div class="diagram-frame">
+    <svg class="flow-svg" viewBox="0 0 1460 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Subcontract buyout process flow chart">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 9 5 L 0 9 z" class="arrowhead"/>
+  </marker>
+  <marker id="arrow-super" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 9 5 L 0 9 z" class="arrowhead arrowhead-super"/>
+  </marker>
+</defs>
+<g class="super-band"><rect class="super-band-shape" x="10" y="676" width="896" height="224" rx="14"/><text class="super-band-label" x="892" y="700" text-anchor="end">REVISE &amp; RESUBMIT LOOP</text></g>
+<g class="node node-start" tabindex="0" role="button" data-step="s1" aria-label="Fill Out the Template – view details"><rect class="node-start-shape" x="60" y="80" width="360" height="80" rx="7"/><rect class="node-ring" x="60" y="80" width="360" height="80" rx="7" fill="none"/><foreignObject x="60" y="80" width="360" height="80"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">Fill Out the Template</div></div></foreignObject></g>
+<g class="node node-process" tabindex="0" role="button" data-step="s2" aria-label="File in Dropbox – view details"><rect class="node-process-shape" x="60" y="195" width="360" height="95" rx="7"/><rect class="node-ring" x="60" y="195" width="360" height="95" rx="7" fill="none"/><foreignObject x="60" y="195" width="360" height="95"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">File in Dropbox</div><div class="fo-sub">unsigned / signed / proposal</div></div></foreignObject></g>
+<g class="node node-process" tabindex="0" role="button" data-step="s3" aria-label="Send the Buyout for Internal Review – view details"><rect class="node-process-shape" x="60" y="322" width="360" height="80" rx="7"/><rect class="node-ring" x="60" y="322" width="360" height="80" rx="7" fill="none"/><foreignObject x="60" y="322" width="360" height="80"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">Send the Buyout for Internal Review</div></div></foreignObject></g>
+<g class="node node-process" tabindex="0" role="button" data-step="s4" aria-label="Explain Anything the Reviewers Need to Know – view details"><rect class="node-process-shape" x="60" y="434" width="360" height="95" rx="7"/><rect class="node-ring" x="60" y="434" width="360" height="95" rx="7" fill="none"/><foreignObject x="60" y="434" width="360" height="95"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">Explain Anything the Reviewers Need to Know</div></div></foreignObject></g>
+<g class="node node-process" tabindex="0" role="button" data-step="s5" aria-label="Complete Internal Review – view details"><rect class="node-process-shape" x="60" y="561" width="360" height="95" rx="7"/><rect class="node-ring" x="60" y="561" width="360" height="95" rx="7" fill="none"/><foreignObject x="60" y="561" width="360" height="95"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">Complete Internal Review</div><div class="fo-sub">Mike reviews against budget</div></div></foreignObject></g>
+<g class="node node-decision" tabindex="0" role="button" data-step="d1" aria-label="Approved? – view details"><polygon class="node-decision-shape" points="240,720 420,800 240,880 60,800"/><polygon class="node-ring" points="240,720 420,800 240,880 60,800" fill="none"/><foreignObject x="136.5" y="762.0" width="206.99999999999997" height="76.0"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">Approved?</div></div></foreignObject></g>
+<g class="node node-alt" tabindex="0" role="button" data-step="s5b" aria-label="PM Revises &amp; Resubmits to Mike – view details"><rect class="node-process-alt-shape" x="540" y="755" width="340" height="90" rx="7"/><rect class="node-ring" x="540" y="755" width="340" height="90" rx="7" fill="none"/><foreignObject x="540" y="755" width="340" height="90"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">PM Revises &amp; Resubmits to Mike</div></div></foreignObject></g>
+<g class="node node-process" tabindex="0" role="button" data-step="s6" aria-label="Finance Prepares the Contract – view details"><rect class="node-process-shape" x="1040" y="240" width="360" height="80" rx="7"/><rect class="node-ring" x="1040" y="240" width="360" height="80" rx="7" fill="none"/><foreignObject x="1040" y="240" width="360" height="80"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">Finance Prepares the Contract</div></div></foreignObject></g>
+<g class="node node-process" tabindex="0" role="button" data-step="s7" aria-label="Subcontractor Receives the Contract – view details"><rect class="node-process-shape" x="1040" y="355" width="360" height="95" rx="7"/><rect class="node-ring" x="1040" y="355" width="360" height="95" rx="7" fill="none"/><foreignObject x="1040" y="355" width="360" height="95"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">Subcontractor Receives the Contract</div><div class="fo-sub">sent via DocuSign</div></div></foreignObject></g>
+<g class="node node-process" tabindex="0" role="button" data-step="s8" aria-label="Obtain Final Signature – view details"><rect class="node-process-shape" x="1040" y="485" width="360" height="95" rx="7"/><rect class="node-ring" x="1040" y="485" width="360" height="95" rx="7" fill="none"/><foreignObject x="1040" y="485" width="360" height="95"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">Obtain Final Signature</div><div class="fo-sub">Drew signs last</div></div></foreignObject></g>
+<g class="node node-end" tabindex="0" role="button" data-step="s9" aria-label="Confirm Fully Executed Contract – view details"><rect class="node-end-shape" x="1040" y="615" width="360" height="80" rx="7"/><rect class="node-ring" x="1040" y="615" width="360" height="80" rx="7" fill="none"/><foreignObject x="1040" y="615" width="360" height="80"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-main">Confirm Fully Executed Contract</div></div></foreignObject></g>
+<g class="node node-info" tabindex="0" role="button" data-step="poco" aria-label="PO / CO — which contract type? – view details"><rect class="node-info-shape" x="540" y="82" width="360" height="170" rx="10"/><rect class="node-ring" x="540" y="82" width="360" height="170" rx="10" fill="none"/><foreignObject x="540" y="82" width="360" height="170"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap"><div class="fo-info-kicker">REFERENCE</div><div class="fo-main">PO / CO — which contract type?</div><div class="fo-info-hint">Click for the PO, Bond and Change Order rules</div></div></foreignObject></g>
+<path class="connector conn-info" d="M 420 121 L 540 121"/>
+<path class="connector" d="M 240.0 160 L 240.0 192" marker-end="url(#arrow)"/>
+<path class="connector" d="M 240.0 290 L 240.0 319" marker-end="url(#arrow)"/>
+<path class="connector" d="M 240.0 402 L 240.0 431" marker-end="url(#arrow)"/>
+<path class="connector" d="M 240.0 529 L 240.0 558" marker-end="url(#arrow)"/>
+<path class="connector" d="M 240 656 L 240 717" marker-end="url(#arrow)"/>
+<path class="connector conn-super" d="M 420 800 L 537 800" marker-end="url(#arrow-super)"/>
+<text class="edge-label edge-label-alt" x="480.0" y="782" text-anchor="middle">No</text>
+<path class="connector conn-super" d="M 710.0 755 L 710.0 722 L 40 722 L 40 800 L 57 800" marker-end="url(#arrow-super)"/>
+<text class="edge-label edge-label-alt" x="330" y="713" text-anchor="middle">resubmit</text>
+<path class="connector" d="M 240 880 L 240 950 L 980 950 L 980 150 L 1220.0 150 L 1220.0 237" marker-end="url(#arrow)"/>
+<text class="edge-label" x="305" y="938" text-anchor="middle">Yes</text>
+<path class="connector" d="M 1220.0 320 L 1220.0 352" marker-end="url(#arrow)"/>
+<path class="connector" d="M 1220.0 450 L 1220.0 482" marker-end="url(#arrow)"/>
+<path class="connector" d="M 1220.0 580 L 1220.0 612" marker-end="url(#arrow)"/>
+</svg>
+  </div>
+  </div>
+
+  <footer class="credit">Based on AmeriTech's Buyout Process SOP &mdash; click a step for the full write-up.</footer>
+</div>
+
+
+<div class="fullview-overlay" id="fullviewOverlay">
+  <div class="fullview-top">
+    <span class="fullview-title">Subcontract Buyout Flow Chart</span>
+    <button type="button" class="fullview-close" id="fullviewClose">Close full view &times;</button>
+  </div>
+  <div class="fullview-inner" id="fullviewInner"></div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-wrap">
+    <div class="modal" id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <span class="modal-tag" id="modalTag"></span>
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody"></div>
+      <div class="modal-nav">
+        <button id="modalPrev" type="button">&larr; Previous step</button>
+        <button id="modalNext" type="button">Next step &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
+  <div class="lightbox-figure">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<script>
+const STEP_DATA = {"s1": {"title": "Fill Out the Template", "tag": "Trigger", "kind": "terminal", "bodyHtml": "<ul><li>Select contract type:<ul><li><b>PO</b> &ndash; if under $10,000, material only, or work already complete</li><li><b>Bond</b> &ndash; if over $250,000</li></ul></li><li>Scope of Work<ul><li>If summarizing the SOW instead of copying it fully, end with: &ldquo;SOW attached here too, incorporated herein by reference.&rdquo;</li></ul></li><li>Estimated Start Date<ul><li>Use the day after buyout is signed and sent internally for QC.</li><li>If work already started, use actual start date.</li></ul></li><li>Estimated Completion Date<ul><li>Must <b>NOT</b> be the CCD.</li><li>Must allow buffer time before CCD.</li></ul></li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/2233f7976fb3.webp\" alt=\"Request for Subcontract PO/Bond template\" loading=\"lazy\"><figcaption>Request for Subcontract PO/Bond template</figcaption></figure></div>"}, "s2": {"title": "File in Dropbox", "tag": "Subcontractor folder \u00b7 correct project", "kind": "process", "bodyHtml": "<ul><li>File in Dropbox in the subcontractor folder in the correct project.</li><li>Save as the following:<ul><li>Unsigned Buyout &rarr; &ldquo;Sub Name Buyout&rdquo;</li><li>Signed Buyout (PM/CM signed) &rarr; &ldquo;Sub Name Buyoutx&rdquo;</li><li>Proposal &rarr; &ldquo;Sub Name Proposal&rdquo;</li></ul></li></ul>"}, "s3": {"title": "Send the Buyout for Internal Review", "tag": "PM action", "kind": "process", "bodyHtml": "<ul><li>Do not send the approval email until all documents are saved in Dropbox.</li><li>Send the buyout to Mike Paquet and Finance.</li></ul>"}, "s4": {"title": "Explain Anything the Reviewers Need to Know", "tag": "In the review email", "kind": "process", "bodyHtml": "<ul><li>The email should identify anything that Finance and Operations need to know before approval.</li><li>Include special payment terms, unusual requirements, budget concerns, cost code issues, or anything that could delay processing.</li><li>If the buyout is over budget, explain why and identify where the funds should be pulled from.</li><li>If it is a Change Order, explain why the Change Order is being processed and provide the necessary supporting information.</li></ul>"}, "s5": {"title": "Complete Internal Review", "tag": "Mike reviews against budget", "kind": "process", "bodyHtml": "<ul><li>Mike reviews the buyout against the budget.</li><li>If revisions are required it is returned to the PM to revise and resubmit back to Mike.</li><li>Once approved, Mike forwards the approved buyout to Laurie/Finance and copies the appropriate project team.</li></ul>"}, "d1": {"title": "Approved?", "tag": "Decision point", "kind": "decision", "bodyHtml": "<ul><li>Mike checks the buyout against the budget before it can move to Finance.</li><li>Not approved yet: the buyout goes back to the PM to revise and resubmit &ndash; it keeps cycling until Mike signs off.</li><li>Approved: Mike forwards it to Laurie/Finance and copies the project team.</li></ul>"}, "s5b": {"title": "PM Revises & Resubmits to Mike", "tag": "No branch", "kind": "process", "bodyHtml": "<ul><li>The PM revises the buyout based on Mike's feedback.</li><li>It's resubmitted back to Mike for another pass against the budget.</li><li>This cycles until the buyout is approved.</li></ul>"}, "s6": {"title": "Finance Prepares the Contract", "tag": "Laurie / Finance", "kind": "process", "bodyHtml": "<ul><li>Laurie makes the necessary budget adjustments in Intacct and prepares the contract documents for the subcontractor.</li><li>The contract goes through the required internal signatures before being sent to the subcontractor.</li></ul>"}, "s7": {"title": "Subcontractor Receives the Contract", "tag": "Sent via DocuSign", "kind": "process", "bodyHtml": "<ul><li>The contract is sent to the subcontractor through DocuSign.</li><li>The subcontractor has approximately one week to sign. BD follows up with the subcontractor while the contract is in DocuSign.</li></ul>"}, "s8": {"title": "Obtain Final Signature", "tag": "Drew signs last", "kind": "process", "bodyHtml": "<ul><li>After the subcontractor signs, the contract continues through the remaining DocuSign approvals.</li><li>Drew's signature is the final signature.</li><li>The subcontract is not fully executed until all required signatures are complete.</li></ul>"}, "s9": {"title": "Confirm Fully Executed Contract", "tag": "End", "kind": "terminal", "bodyHtml": "<ul><li>Confirm the contract has been fully executed and properly filed.</li></ul>"}, "sop_buyout": {"title": "Subcontract Buyout Process \u2014 Full SOP", "tag": "Reference", "kind": "reference", "bodyHtml": "<p class=\"sop-intro\">The full Subcontract Buyout Process, step by step &mdash; the same content as the diagram, in one scrollable view.</p><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">Fill Out the Template</div><span class=\"sop-due\">Trigger</span></div><ul><li>Select contract type:<ul><li><b>PO</b> &ndash; if under $10,000, material only, or work already complete</li><li><b>Bond</b> &ndash; if over $250,000</li></ul></li><li>Scope of Work<ul><li>If summarizing the SOW instead of copying it fully, end with: &ldquo;SOW attached here too, incorporated herein by reference.&rdquo;</li></ul></li><li>Estimated Start Date<ul><li>Use the day after buyout is signed and sent internally for QC.</li><li>If work already started, use actual start date.</li></ul></li><li>Estimated Completion Date<ul><li>Must <b>NOT</b> be the CCD.</li><li>Must allow buffer time before CCD.</li></ul></li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/2233f7976fb3.webp\" alt=\"Request for Subcontract PO/Bond template\" loading=\"lazy\"><figcaption>Request for Subcontract PO/Bond template</figcaption></figure></div></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">File in Dropbox</div><span class=\"sop-due\">Subcontractor folder \u00b7 correct project</span></div><ul><li>File in Dropbox in the subcontractor folder in the correct project.</li><li>Save as the following:<ul><li>Unsigned Buyout &rarr; &ldquo;Sub Name Buyout&rdquo;</li><li>Signed Buyout (PM/CM signed) &rarr; &ldquo;Sub Name Buyoutx&rdquo;</li><li>Proposal &rarr; &ldquo;Sub Name Proposal&rdquo;</li></ul></li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">Send the Buyout for Internal Review</div><span class=\"sop-due\">PM action</span></div><ul><li>Do not send the approval email until all documents are saved in Dropbox.</li><li>Send the buyout to Mike Paquet and Finance.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">Explain Anything the Reviewers Need to Know</div><span class=\"sop-due\">In the review email</span></div><ul><li>The email should identify anything that Finance and Operations need to know before approval.</li><li>Include special payment terms, unusual requirements, budget concerns, cost code issues, or anything that could delay processing.</li><li>If the buyout is over budget, explain why and identify where the funds should be pulled from.</li><li>If it is a Change Order, explain why the Change Order is being processed and provide the necessary supporting information.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">Complete Internal Review</div><span class=\"sop-due\">Mike reviews against budget</span></div><ul><li>Mike reviews the buyout against the budget.</li><li>If revisions are required it is returned to the PM to revise and resubmit back to Mike.</li><li>Once approved, Mike forwards the approved buyout to Laurie/Finance and copies the appropriate project team.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">Approved?</div><span class=\"sop-due\">Decision point</span></div><ul><li>Mike checks the buyout against the budget before it can move to Finance.</li><li>Not approved yet: the buyout goes back to the PM to revise and resubmit &ndash; it keeps cycling until Mike signs off.</li><li>Approved: Mike forwards it to Laurie/Finance and copies the project team.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">PM Revises & Resubmits to Mike</div><span class=\"sop-due\">No branch</span></div><ul><li>The PM revises the buyout based on Mike's feedback.</li><li>It's resubmitted back to Mike for another pass against the budget.</li><li>This cycles until the buyout is approved.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">Finance Prepares the Contract</div><span class=\"sop-due\">Laurie / Finance</span></div><ul><li>Laurie makes the necessary budget adjustments in Intacct and prepares the contract documents for the subcontractor.</li><li>The contract goes through the required internal signatures before being sent to the subcontractor.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">Subcontractor Receives the Contract</div><span class=\"sop-due\">Sent via DocuSign</span></div><ul><li>The contract is sent to the subcontractor through DocuSign.</li><li>The subcontractor has approximately one week to sign. BD follows up with the subcontractor while the contract is in DocuSign.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">Obtain Final Signature</div><span class=\"sop-due\">Drew signs last</span></div><ul><li>After the subcontractor signs, the contract continues through the remaining DocuSign approvals.</li><li>Drew's signature is the final signature.</li><li>The subcontract is not fully executed until all required signatures are complete.</li></ul></div><div class=\"sop-step\"><div class=\"sop-step-head\"><div class=\"sop-step-title\">Confirm Fully Executed Contract</div><span class=\"sop-due\">End</span></div><ul><li>Confirm the contract has been fully executed and properly filed.</li></ul></div><button type=\"button\" class=\"cheat-download\" data-filename=\"Buyout_Process.docx\" data-mime=\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\" data-href=\"../assets/docs/Buyout_Process.docx\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M8 2v8.5M8 10.5 4.8 7.3M8 10.5l3.2-3.2\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M2.5 12.5v1a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-1\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\"/></svg>Download the original SOP (Buyout_Process.docx)</button>"}, "poco": {"title": "PO / CO \u2014 Which Contract Type?", "tag": "Reference", "kind": "reference", "bodyHtml": "<p class=\"sop-intro\">These are the contract-type rules from the Buyout Process SOP, pulled out here for quick reference. They apply at <b>Fill Out the Template</b>, the first step of the buyout.</p><ul><li>Select contract type:<ul><li><b>PO</b> &ndash; if under $10,000, material only, or work already complete</li><li><b>Bond</b> &ndash; if over $250,000</li></ul></li><li>Change Orders:<ul><li>If it is a Change Order, explain why the Change Order is being processed and provide the necessary supporting information.</li><li>This goes in the internal review email, alongside anything else Finance and Operations need to know before approval.</li></ul></li><li>Also set on the template:<ul><li><b>Scope of Work</b> &ndash; if summarizing the SOW instead of copying it fully, end with: &ldquo;SOW attached here too, incorporated herein by reference.&rdquo;</li><li><b>Estimated Start Date</b> &ndash; the day after buyout is signed and sent internally for QC; if work already started, use the actual start date.</li><li><b>Estimated Completion Date</b> &ndash; must <b>NOT</b> be the CCD, and must allow buffer time before CCD.</li></ul></li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/2233f7976fb3.webp\" alt=\"Request for Subcontract PO/Bond template\" loading=\"lazy\"><figcaption>Request for Subcontract PO/Bond template</figcaption></figure></div>"}};
+const STEP_ORDER = ["s1", "s2", "s3", "s4", "s5", "d1", "s5b", "s6", "s7", "s8", "s9"];
+
+const overlay = document.getElementById('modalOverlay');
+const modalBox = document.getElementById('modalBox');
+const modalTag = document.getElementById('modalTag');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalPrev = document.getElementById('modalPrev');
+const modalNext = document.getElementById('modalNext');
+
+let currentId = null;
+let lastFocused = null;
+
+function renderStep(id) {
+  const data = STEP_DATA[id];
+  if (!data) return;
+  currentId = id;
+  modalTag.textContent = data.tag;
+  modalTag.className = 'modal-tag tag-' + data.kind;
+  modalTitle.textContent = data.title;
+  modalBody.innerHTML = data.bodyHtml;
+  modalBox.classList.toggle('modal-wide', data.kind === 'reference');
+
+  const idx = STEP_ORDER.indexOf(id);
+  modalPrev.disabled = idx <= 0;
+  modalNext.disabled = idx === -1 || idx >= STEP_ORDER.length - 1;
+  modalPrev.closest('.modal-nav').style.display = idx === -1 ? 'none' : 'flex';
+  modalBox.scrollTop = 0;
+}
+
+function openModal(id) {
+  lastFocused = document.activeElement;
+  renderStep(id);
+  overlay.classList.add('open');
+  modalBox.focus();
+  document.addEventListener('keydown', onKeydown);
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.removeEventListener('keydown', onKeydown);
+  if (lastFocused) lastFocused.focus();
+}
+
+function onKeydown(e) {
+  if (e.key === 'Escape') {
+    if (lightboxOverlay.classList.contains('open')) { closeLightbox(); return; }
+    closeModal();
+    return;
+  }
+  if (lightboxOverlay.classList.contains('open')) return;
+  if (e.key === 'ArrowRight' && !modalNext.disabled) step(1);
+  if (e.key === 'ArrowLeft' && !modalPrev.disabled) step(-1);
+}
+
+const lightboxOverlay = document.getElementById('lightboxOverlay');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCaption = document.getElementById('lightboxCaption');
+let lightboxLastFocused = null;
+
+function openLightbox(src, caption) {
+  lightboxLastFocused = document.activeElement;
+  lightboxImg.src = src;
+  lightboxImg.alt = caption || '';
+  lightboxCaption.textContent = caption || '';
+  lightboxOverlay.classList.add('open');
+}
+
+function closeLightbox() {
+  lightboxOverlay.classList.remove('open');
+  lightboxImg.src = '';
+  if (lightboxLastFocused) lightboxLastFocused.focus();
+}
+
+modalBody.addEventListener('click', (e) => {
+  const img = e.target.closest('.modal-gallery img');
+  if (img) {
+    const caption = img.closest('figure')?.querySelector('figcaption')?.textContent || img.alt || '';
+    openLightbox(img.src, caption);
+    return;
+  }
+  const dl = e.target.closest('.cheat-download');
+  if (dl) downloadAttachment(dl);
+});
+
+function downloadAttachment(btn) {
+  // App build: the file is a real asset (cached offline); on a phone this
+  // opens the share sheet so it can be saved to Files, mailed, or opened in Word.
+  window.AmeriTechApp.shareFile(btn.getAttribute('data-href'),
+    btn.getAttribute('data-filename'), btn.getAttribute('data-mime'));
+}
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightboxImg.addEventListener('click', closeLightbox);
+lightboxOverlay.addEventListener('click', (e) => { if (e.target === lightboxOverlay) closeLightbox(); });
+
+function step(dir) {
+  const idx = STEP_ORDER.indexOf(currentId);
+  const nextIdx = idx + dir;
+  if (nextIdx >= 0 && nextIdx < STEP_ORDER.length) renderStep(STEP_ORDER[nextIdx]);
+}
+
+function fitNodeText() {
+  document.querySelectorAll('.fo-wrap').forEach(wrap => {
+    if (wrap.closest('.node-info')) return;
+    const main = wrap.querySelector('.fo-main');
+    const sub = wrap.querySelector('.fo-sub');
+    if (!main) return;
+    const isDecision = wrap.closest('.node-decision') !== null;
+    let mainSize = isDecision ? 18.5 : 19, subSize = 15;
+    main.style.fontSize = mainSize + 'px';
+    if (sub) sub.style.fontSize = subSize + 'px';
+    let guard = 50;
+    while (wrap.scrollHeight > wrap.clientHeight + 1 && mainSize > 8 && guard > 0) {
+      mainSize -= 0.6;
+      subSize -= 0.44;
+      main.style.fontSize = mainSize + 'px';
+      if (sub) sub.style.fontSize = Math.max(subSize, 7) + 'px';
+      guard--;
+    }
+  });
+}
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(fitNodeText).catch(fitNodeText);
+} else {
+  fitNodeText();
+}
+window.addEventListener('load', fitNodeText);
+setTimeout(fitNodeText, 350);
+
+document.querySelectorAll('.node').forEach(el => {
+  const id = el.getAttribute('data-step');
+  el.addEventListener('click', () => openModal(id));
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(id); }
+  });
+});
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+const sopBuyoutBtn = document.getElementById('sopBuyoutBtn');
+if (sopBuyoutBtn) sopBuyoutBtn.addEventListener('click', () => openModal('sop_buyout'));
+modalPrev.addEventListener('click', () => step(-1));
+modalNext.addEventListener('click', () => step(1));
+
+/* ---- full-chart view: the whole chart scaled to fit, no scrolling ---- */
+const fullviewOverlay = document.getElementById('fullviewOverlay');
+const fullviewInner = document.getElementById('fullviewInner');
+
+function openFullview() {
+  if (!fullviewInner.firstChild) {
+    const clone = document.querySelector('.flow-svg').cloneNode(true);
+    clone.removeAttribute('style');
+    clone.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    fullviewInner.appendChild(clone);
+  }
+  fullviewOverlay.classList.add('open');
+  document.addEventListener('keydown', onFullviewKey);
+}
+function closeFullview() {
+  fullviewOverlay.classList.remove('open');
+  document.removeEventListener('keydown', onFullviewKey);
+}
+function onFullviewKey(e) {
+  // let the step modal handle its own Escape first
+  if (e.key === 'Escape' && !overlay.classList.contains('open')) closeFullview();
+}
+document.getElementById('expandBtn').addEventListener('click', openFullview);
+document.getElementById('fullviewClose').addEventListener('click', closeFullview);
+
+// clicking the chart itself opens the full view -- unless a step was clicked
+document.querySelector('.diagram-frame').addEventListener('click', (e) => {
+  if (e.target.closest('.node')) return;
+  openFullview();
+});
+// steps stay clickable inside the full view
+fullviewInner.addEventListener('click', (e) => {
+  const n = e.target.closest('.node');
+  if (n) openModal(n.getAttribute('data-step'));
+});
+
+</script>
+
+<a class="app-home" href="./" aria-label="Back to all workflows"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Workflows</a>
+
+<link rel="stylesheet" href="../assets/workflow-fixes.css">
+<script src="../assets/workflow-fixes.js"></script>
+<a class="hub-return" href="../#resources">AmeriVerse Hub →</a>

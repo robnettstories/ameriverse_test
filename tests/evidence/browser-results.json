@@ -1,0 +1,2259 @@
+{
+  "base": "http://127.0.0.1:8001/",
+  "started": "2026-10-21T17:14:40.395Z",
+  "engines": [
+    {
+      "engine": "Chromium",
+      "version": "154.0.8037.57"
+    },
+    {
+      "engine": "WebKit",
+      "version": "26.5"
+    }
+  ],
+  "checks": [
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "desktop",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Browser context offline after cache installation"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-375",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Browser context offline after cache installation"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "iphone-390",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Browser context offline after cache installation"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-portrait",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Browser context offline after cache installation"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 113.15625,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 90.953125,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "Chromium",
+      "device": "ipad-landscape",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Browser context offline after cache installation"
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "desktop",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Local origin stopped after cache installation; all subsequent requests served without a server"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 375,
+      "scrollWidth": 375,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-375",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Local origin stopped after cache installation; all subsequent requests served without a server"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 390,
+      "scrollWidth": 390,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "iphone-390",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Local origin stopped after cache installation; all subsequent requests served without a server"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 768,
+      "scrollWidth": 768,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-portrait",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Local origin stopped after cache installation; all subsequent requests served without a server"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Route executive",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Route executive/cash",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Route executive/actions",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Route jobsite/health",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Route jobsite/people",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Route jobsite/assets",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Route jobsite/vendors",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Route resources",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Route insights",
+      "status": "passed",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "broken": []
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Portfolio filter totals, clear and empty search",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Project drilldown, comparable services contract and keyboard dialog containment",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Finite staffing, timing changes, save/load and full reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Local prevention tasks persist and reset",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Workflow search, source document download and concept report",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-by-date.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Workflow modal navigation, focus & 44px targets: aia-billing-flow-chart.html",
+      "status": "passed",
+      "steps": 21,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Workflow modal navigation, focus & 44px targets: subcontract-buyout-flow-chart.html",
+      "status": "passed",
+      "steps": 11,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Workflow modal navigation, focus & 44px targets: apm-project-workflow.html",
+      "status": "passed",
+      "steps": 15,
+      "dimensions": [
+        {
+          "id": "modalClose",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "modalPrev",
+          "w": 111.109375,
+          "h": 44
+        },
+        {
+          "id": "modalNext",
+          "w": 88.890625,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Original Connected Enterprise remains accessible",
+      "status": "passed"
+    },
+    {
+      "engine": "WebKit",
+      "device": "ipad-landscape",
+      "name": "Offline first-load cache and all portal/workflow navigation",
+      "status": "passed",
+      "method": "Local origin stopped after cache installation; all subsequent requests served without a server"
+    }
+  ],
+  "errors": [],
+  "performance": [
+    {
+      "run": 1,
+      "profile": "Chromium 390×844; 4× CPU; 1.6Mbps down; 150ms latency; cold cache; service workers blocked",
+      "lcpMs": 1824,
+      "cls": 0,
+      "fcpMs": 1176,
+      "loadMs": 2084,
+      "filterInteractionMs": 54,
+      "eventDurations": []
+    },
+    {
+      "run": 2,
+      "profile": "Chromium 390×844; 4× CPU; 1.6Mbps down; 150ms latency; cold cache; service workers blocked",
+      "lcpMs": 1752,
+      "cls": 0,
+      "fcpMs": 1160,
+      "loadMs": 2010,
+      "filterInteractionMs": 56,
+      "eventDurations": []
+    },
+    {
+      "run": 3,
+      "profile": "Chromium 390×844; 4× CPU; 1.6Mbps down; 150ms latency; cold cache; service workers blocked",
+      "lcpMs": 1712,
+      "cls": 0,
+      "fcpMs": 1116,
+      "loadMs": 1972,
+      "filterInteractionMs": 74,
+      "eventDurations": []
+    }
+  ],
+  "limitations": [
+    "Desktop browser device emulation is not physical iPhone or iPad testing.",
+    "Native iOS sharing, installation and resume require physical-device validation."
+  ],
+  "finished": "2026-10-21T17:16:34.104Z",
+  "summary": {
+    "passed": 200,
+    "failed": 0,
+    "errors": 0
+  }
+}

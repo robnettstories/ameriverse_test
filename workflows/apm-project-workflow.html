@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Workflows">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/app.css">
+<script src="../assets/app.js" defer></script>
+<meta name="app-docs" content="">
+<title>APM Project Workflow</title>
+<style>
+  :root {
+    --bg: #EEF1F3;
+    --surface: #FFFFFF;
+    --ink: #0C273C;
+    --muted: #5B6B7C;
+    --rule: #D6DCE2;
+    --magenta: #AF2838;
+    --blue: #0C273C;
+    --blue-alt: #3D6088;
+    --orange: #171C22;
+    --decision-text: #FFFFFF;
+    --gray: #8792A0;
+    --edge-label: #AF2838;
+    --ring: #AF2838;
+    --start: #1B7F4B;
+    --end: #AF2838;
+    --decision: #A8751A;
+    --shadow: 0 18px 44px -18px rgba(12, 39, 60, 0.35);
+    --overlay: rgba(12, 39, 60, 0.55);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #FFFFFF;
+      --surface: #FFFFFF;
+      --ink: #0C273C;
+      --muted: #5B6B7C;
+      --rule: #D6DCE2;
+      --magenta: #AF2838;
+      --blue: #0C273C;
+      --blue-alt: #3D6088;
+      --orange: #171C22;
+      --decision-text: #FFFFFF;
+      --gray: #8792A0;
+      --edge-label: #AF2838;
+      --ring: #AF2838;
+    --start: #1B7F4B;
+    --end: #AF2838;
+    --decision: #A8751A;
+      --overlay: rgba(12, 39, 60, 0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --ink: #0C273C;
+    --muted: #5B6B7C;
+    --rule: #D6DCE2;
+    --magenta: #AF2838;
+    --blue: #0C273C;
+    --blue-alt: #3D6088;
+    --orange: #171C22;
+    --decision-text: #FFFFFF;
+    --gray: #8792A0;
+    --edge-label: #AF2838;
+    --ring: #AF2838;
+    --start: #1B7F4B;
+    --end: #AF2838;
+    --decision: #A8751A;
+    --overlay: rgba(12, 39, 60, 0.55);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+    padding-inline: 18px;
+    padding-block: 26px;
+  }
+  h1, h2, .edge-label, .fo-main {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  }
+  .wrap { max-width: 1500px; margin: 0 auto; }
+
+  header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .brand-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-badge {
+    flex: none;
+    height: 56px;
+    padding: 8px 14px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--rule);
+  }
+  .logo-badge img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+  .title-block h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: 0.01em;
+  }
+  .title-block p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .hint {
+    font-size: 12.5px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hint svg { flex: none; opacity: 0.8; }
+
+  .toolbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .reminders-banner {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--magenta);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+  }
+  .reminders-banner-title {
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    color: var(--magenta);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .reminders-banner-body ul {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 32px;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .reminders-banner-body li {
+    margin-bottom: 6px;
+    break-inside: avoid;
+  }
+  .reminders-banner-body .k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.86em;
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  @media (max-width: 720px) {
+    .reminders-banner-body ul { columns: 1; }
+  }
+
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+  .sw.magenta { background: var(--magenta); }
+  .sw.blue { background: var(--blue); }
+  .sw.orange { background: var(--orange); }
+
+  .diagram-frame {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 16px;
+    overflow-x: auto;
+  }
+  .diagram-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46%;
+    min-width: 340px;
+    max-width: 680px;
+    height: auto;
+    opacity: 0.20;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .flow-svg {
+    width: 100%;
+    height: auto;
+    min-width: 900px;
+    display: block;
+    overflow: visible;
+  }
+
+  .node { cursor: pointer; outline: none; }
+  .node:focus { outline: none; }
+  .node-process-shape, .node-process-alt-shape { fill: var(--blue); }
+  .node-process-alt-shape { fill: var(--blue-alt); }
+  .node-start-shape { fill: var(--start); }
+  .node-end-shape { fill: var(--end); }
+  .node-decision-shape { fill: var(--decision); }
+
+  .node-ring { stroke: transparent; stroke-width: 0; }
+  .node:focus-visible .node-ring {
+    stroke: var(--ring);
+    stroke-width: 3.6;
+  }
+
+  .fo-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    line-height: 1.12;
+    pointer-events: none;
+  }
+  .node-decision .fo-wrap { color: var(--decision-text); }
+  .fo-main { font-weight: 700; font-size: 16px; }
+  .fo-sub { font-weight: 600; font-size: 11.6px; opacity: 0.92; margin-top: 4px; }
+  .node-decision .fo-main { font-size: 14.4px; }
+
+  .connector { stroke: var(--gray); stroke-width: 2.4; fill: none; stroke-linecap: round; }
+  .arrowhead { fill: var(--gray); }
+  .edge-label { fill: var(--edge-label); font-size: 14.4px; font-weight: 700; font-style: italic; }
+
+  .node-process-shape, .node-process-alt-shape, .node-terminal-shape, .node-decision-shape {
+    transition: filter 0.15s ease;
+  }
+  .node:hover .node-process-shape,
+  .node:hover .node-process-alt-shape,
+  .node:hover .node-terminal-shape,
+  .node:hover .node-decision-shape {
+    filter: brightness(1.1);
+  }
+
+  footer.credit {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---- modal ---- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal {
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 14px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 82vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow);
+    padding: 26px 26px 22px;
+    transform: translateY(10px) scale(0.98);
+    transition: transform 0.18s ease;
+  }
+  .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+  .modal-tag {
+    display: inline-block;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .modal-tag.tag-process { background: color-mix(in srgb, var(--blue) 18%, transparent); color: var(--blue); }
+  .modal-tag.tag-decision { background: color-mix(in srgb, var(--orange) 20%, transparent); color: var(--orange); }
+  .modal-tag.tag-terminal { background: color-mix(in srgb, var(--magenta) 20%, transparent); color: var(--magenta); }
+  .modal h2 { font-size: 24px; margin: 0 0 14px; font-weight: 700; }
+  .modal ul { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; }
+  .modal ul li { margin-bottom: 8px; }
+  .modal ul ul { margin-top: 6px; font-size: 13.5px; color: var(--muted); }
+  .modal .k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.86em;
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+  }
+  .modal-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .modal-gallery figure {
+    margin: 0;
+    flex: 1 1 210px;
+    max-width: 280px;
+  }
+  .modal-gallery img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    background: #fff;
+    cursor: zoom-in;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .modal-gallery img:hover {
+    filter: brightness(1.04);
+    transform: translateY(-1px);
+  }
+  .modal-gallery figcaption {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 5px;
+    line-height: 1.3;
+  }
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 14, 22, 0.86);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+    z-index: 1000;
+  }
+  .lightbox-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox-figure {
+    max-width: min(94vw, 1400px);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .lightbox-figure img {
+    max-width: 100%;
+    max-height: 82vh;
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+    background: #fff;
+    cursor: zoom-out;
+  }
+  .lightbox-caption {
+    color: #F2F0EA;
+    font-size: 13.5px;
+    text-align: center;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: #FFFFFF;
+    font-size: 22px;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { background: rgba(255, 255, 255, 0.22); }
+  .lightbox-close:focus-visible { outline: 3px solid var(--magenta); outline-offset: 2px; }
+  @media (max-width: 640px) {
+    .lightbox-overlay { padding: 18px; }
+  }
+  .modal-close:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+  .modal-close:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 1px; }
+  .modal-wrap { position: relative; }
+  .modal-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+  .modal-nav button {
+    background: none;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: "Source Sans 3", sans-serif;
+  }
+  .modal-nav button:hover { border-color: var(--blue); color: var(--blue); }
+  .modal-nav button:focus-visible { outline: 3px solid var(--blue-alt); outline-offset: 1px; }
+  .modal-nav button:disabled { opacity: 0.35; cursor: default; }
+  .modal-nav button:disabled:hover { border-color: var(--rule); color: var(--ink); }
+
+  @media (max-width: 640px) {
+    .modal { padding: 22px 18px 18px; }
+    .modal h2 { font-size: 20px; }
+  }
+
+  /* ===== white boxes, colour in the outline and the type =====
+     Matches the AIA billing and subcontract buyout flow charts. */
+  .node-process-shape,
+  .node-process-alt-shape,
+  .node-start-shape,
+  .node-end-shape,
+  .node-decision-shape {
+    fill: #FFFFFF;
+    stroke-width: 3;
+  }
+  .node-process-shape { stroke: var(--blue); }
+  .node-process-alt-shape { stroke: var(--blue-alt); }
+  .node-decision-shape { stroke: var(--decision); }
+  .node-start-shape { stroke: var(--start); stroke-width: 4; }
+  .node-end-shape { stroke: var(--end); stroke-width: 4; }
+
+  .fo-wrap { color: var(--blue); }
+  .node-process-alt .fo-wrap { color: var(--blue-alt); }
+  .node-decision .fo-wrap { color: var(--decision); }
+  .node-start .fo-wrap { color: var(--start); }
+  .node-end .fo-wrap { color: var(--end); }
+
+  .node:hover .node-process-shape,
+  .node:hover .node-process-alt-shape,
+  .node:hover .node-start-shape,
+  .node:hover .node-end-shape,
+  .node:hover .node-decision-shape {
+    filter: none;
+    fill: color-mix(in srgb, var(--blue) 7%, #FFFFFF);
+  }
+
+  .sw.start { background: var(--start); }
+  .sw.end { background: var(--end); }
+  .sw.decision { background: var(--decision); }
+  .sw.blue-alt { background: var(--blue-alt); }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="brand-block">
+      <span class="logo-badge"><img src="../assets/img/1f50c085c359.webp" alt="AmeriTech Contracting logo"></span>
+      <div class="title-block">
+        <h1>APM Project Workflow</h1>
+        <p>AmeriTech Contracting &ndash; from project assignment to closeout</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <span class="hint">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1.5c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5S11.6 1.5 8 1.5Z" stroke="currentColor" stroke-width="1.2"/><path d="M8 7.2v4M8 5v.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Click any step for the full detail
+      </span>
+    </div>
+  </header>
+
+  <div class="legend">
+    <span><span class="sw start"></span> Start</span>
+    <span><span class="sw blue"></span> Action step</span>
+    <span><span class="sw decision"></span> Decision point</span>
+    <span><span class="sw blue-alt"></span> Pre-NTP head start</span>
+    <span><span class="sw end"></span> End</span>
+  </div>
+
+  <div class="reminders-banner">
+    <div class="reminders-banner-title">Always Remember</div>
+    <div class="reminders-banner-body"><ul><li>Project number / project name always included in the subject line of emails.</li><li>At minimum, copy the PM &amp; Project Executive on all project correspondence. Always okay to also copy the Superintendent, Sean, Senior Management, etc. from AmeriTech so they&rsquo;re tracking.</li><li>It&rsquo;s okay to tell the sub or client you don&rsquo;t have an answer for them in the moment and will get back to them once you discuss with the PM.</li><li>Always know the <span class="k">CCD</span>.</li><li>Always know the COR &amp; CO / CS contact info.</li></ul></div>
+  </div>
+
+  <div class="diagram-frame">
+    <img class="diagram-watermark" src="../assets/img/e5af226e2478.webp" alt="">
+    <svg viewBox="0 0 1568 1024" class="flow-svg" role="img" aria-label="APM project workflow diagram">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+  </marker>
+</defs>
+<g class="node node-start" data-step="n1" tabindex="0" role="button" aria-label="Assigned to Project – view details">
+<rect x="184.00" y="135.00" width="208.00" height="50.00" rx="25.00" class="node-start-shape node-ring"/>
+<foreignObject x="194.00" y="139.00" width="188.00" height="42.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:188.00px;height:42.00px;"><div class="fo-main">Assigned to Project</div></div></foreignObject>
+</g>
+<g class="node node-process" data-step="n2" tabindex="0" role="button" aria-label="Schedule Internal Post-Award Meeting – view details">
+<rect x="156.00" y="249.00" width="264.00" height="62.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="166.00" y="255.00" width="244.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:244.00px;height:50.00px;"><div class="fo-main">Schedule Internal Post-Award Meeting</div></div></foreignObject>
+</g>
+<g class="node node-process" data-step="n3" tabindex="0" role="button" aria-label="Set Up Procore, Admin Tool &amp; APM Checklist – view details">
+<rect x="156.00" y="369.00" width="264.00" height="62.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="166.00" y="375.00" width="244.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:244.00px;height:50.00px;"><div class="fo-main">Set Up Procore, Admin Tool &amp; APM Checklist</div></div></foreignObject>
+</g>
+<g class="node node-process" data-step="n4" tabindex="0" role="button" aria-label="Run Internal Post-Award Meeting – view details">
+<rect x="156.00" y="489.00" width="264.00" height="62.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="166.00" y="495.00" width="244.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:244.00px;height:50.00px;"><div class="fo-main">Run Internal Post-Award Meeting</div></div></foreignObject>
+</g>
+<g class="node node-process" data-step="n5" tabindex="0" role="button" aria-label="Client Kickoff Meeting – view details">
+<rect x="156.00" y="609.00" width="264.00" height="62.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="166.00" y="615.00" width="244.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:244.00px;height:50.00px;"><div class="fo-main">Client Kickoff Meeting</div></div></foreignObject>
+</g>
+<g class="node node-decision" data-step="d1" tabindex="0" role="button" aria-label="NTP Received? – view details">
+<polygon points="288.00,706.00 420.00,760.00 288.00,814.00 156.00,760.00" class="node-decision-shape node-ring"/>
+<foreignObject x="214.08" y="729.76" width="147.84" height="60.48" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:147.84px;height:60.48px;"><div class="fo-main">NTP Received?</div></div></foreignObject>
+</g>
+<line x1="288.00" y1="185.00" x2="288.00" y2="238.92" class="connector" />
+<line x1="288.00" y1="238.92" x2="288.00" y2="249.00" class="connector" marker-end="url(#arrow)"/>
+<line x1="288.00" y1="311.00" x2="288.00" y2="358.92" class="connector" />
+<line x1="288.00" y1="358.92" x2="288.00" y2="369.00" class="connector" marker-end="url(#arrow)"/>
+<line x1="288.00" y1="431.00" x2="288.00" y2="478.92" class="connector" />
+<line x1="288.00" y1="478.92" x2="288.00" y2="489.00" class="connector" marker-end="url(#arrow)"/>
+<line x1="288.00" y1="551.00" x2="288.00" y2="598.92" class="connector" />
+<line x1="288.00" y1="598.92" x2="288.00" y2="609.00" class="connector" marker-end="url(#arrow)"/>
+<line x1="288.00" y1="671.00" x2="288.00" y2="695.92" class="connector" />
+<line x1="288.00" y1="695.92" x2="288.00" y2="706.00" class="connector" marker-end="url(#arrow)"/>
+<g class="node node-process" data-step="n7" tabindex="0" role="button" aria-label="Submit Internal Submittals – view details">
+<rect x="756.00" y="729.00" width="264.00" height="62.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="766.00" y="735.00" width="244.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:244.00px;height:50.00px;"><div class="fo-main">Submit Internal Submittals</div></div></foreignObject>
+</g>
+<g class="node node-process" data-step="n8" tabindex="0" role="button" aria-label="Subcontractor Submittals – view details">
+<rect x="756.00" y="609.00" width="264.00" height="62.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="766.00" y="615.00" width="244.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:244.00px;height:50.00px;"><div class="fo-main">Subcontractor Submittals</div></div></foreignObject>
+</g>
+<g class="node node-process" data-step="n9" tabindex="0" role="button" aria-label="Recurring Client Meetings – view details">
+<rect x="756.00" y="489.00" width="264.00" height="62.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="766.00" y="495.00" width="244.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:244.00px;height:50.00px;"><div class="fo-main">Recurring Client Meetings</div></div></foreignObject>
+</g>
+<g class="node node-process" data-step="n10" tabindex="0" role="button" aria-label="Pre-Mobilization Meeting – view details">
+<rect x="756.00" y="369.00" width="264.00" height="62.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="766.00" y="375.00" width="244.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:244.00px;height:50.00px;"><div class="fo-main">Pre-Mobilization Meeting</div></div></foreignObject>
+</g>
+<g class="node node-process" data-step="n11" tabindex="0" role="button" aria-label="Mobilize – Ongoing Duties checklist · RFIs · logs · PCOs – view details">
+<rect x="744.00" y="243.00" width="288.00" height="74.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="754.00" y="249.00" width="268.00" height="62.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:268.00px;height:62.00px;"><div class="fo-main">Mobilize – Ongoing Duties</div><div class="fo-sub">checklist · RFIs · logs · PCOs</div></div></foreignObject>
+</g>
+<g class="node node-decision" data-step="d2" tabindex="0" role="button" aria-label="Nearing Completion? – view details">
+<polygon points="888.00,106.00 1020.00,160.00 888.00,214.00 756.00,160.00" class="node-decision-shape node-ring"/>
+<foreignObject x="814.08" y="129.76" width="147.84" height="60.48" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:147.84px;height:60.48px;"><div class="fo-main">Nearing Completion?</div></div></foreignObject>
+</g>
+<line x1="888.00" y1="729.00" x2="888.00" y2="681.08" class="connector" />
+<line x1="888.00" y1="681.08" x2="888.00" y2="671.00" class="connector" marker-end="url(#arrow)"/>
+<line x1="888.00" y1="609.00" x2="888.00" y2="561.08" class="connector" />
+<line x1="888.00" y1="561.08" x2="888.00" y2="551.00" class="connector" marker-end="url(#arrow)"/>
+<line x1="888.00" y1="489.00" x2="888.00" y2="441.08" class="connector" />
+<line x1="888.00" y1="441.08" x2="888.00" y2="431.00" class="connector" marker-end="url(#arrow)"/>
+<line x1="888.00" y1="369.00" x2="888.00" y2="327.08" class="connector" />
+<line x1="888.00" y1="327.08" x2="888.00" y2="317.00" class="connector" marker-end="url(#arrow)"/>
+<line x1="888.00" y1="243.00" x2="888.00" y2="224.08" class="connector" />
+<line x1="888.00" y1="224.08" x2="888.00" y2="214.00" class="connector" marker-end="url(#arrow)"/>
+<g class="node node-process" data-step="n13" tabindex="0" role="button" aria-label="Closeout – view details">
+<rect x="1220.00" y="129.00" width="264.00" height="62.00" rx="7.20" class="node-process-shape node-ring"/>
+<foreignObject x="1230.00" y="135.00" width="244.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:244.00px;height:50.00px;"><div class="fo-main">Closeout</div></div></foreignObject>
+</g>
+<g class="node node-end" data-step="n14" tabindex="0" role="button" aria-label="Project Closed – view details">
+<rect x="1248.00" y="255.00" width="208.00" height="50.00" rx="25.00" class="node-end-shape node-ring"/>
+<foreignObject x="1258.00" y="259.00" width="188.00" height="42.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:188.00px;height:42.00px;"><div class="fo-main">Project Closed</div></div></foreignObject>
+</g>
+<line x1="1352.00" y1="191.00" x2="1352.00" y2="244.92" class="connector" />
+<line x1="1352.00" y1="244.92" x2="1352.00" y2="255.00" class="connector" marker-end="url(#arrow)"/>
+<line x1="420.00" y1="760.00" x2="745.92" y2="760.00" class="connector" />
+<line x1="745.92" y1="760.00" x2="756.00" y2="760.00" class="connector" marker-end="url(#arrow)"/>
+<text x="696.00" y="740.00" text-anchor="middle" class="edge-label">Yes</text>
+<line x1="1020.00" y1="160.00" x2="1209.92" y2="160.00" class="connector" />
+<line x1="1209.92" y1="160.00" x2="1220.00" y2="160.00" class="connector" marker-end="url(#arrow)"/>
+<text x="1120.00" y="136.00" text-anchor="middle" class="edge-label">Yes</text>
+<g class="node node-process-alt" data-step="n6b" tabindex="0" role="button" aria-label="Prep Internal Submittals Early (pre-NTP head start) – view details">
+<rect x="160.00" y="849.00" width="256.00" height="62.00" rx="7.20" class="node-process-alt-shape node-ring"/>
+<foreignObject x="170.00" y="855.00" width="236.00" height="50.00" class="fo-1"><div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="width:236.00px;height:50.00px;"><div class="fo-main">Prep Internal Submittals Early</div><div class="fo-sub">(pre-NTP head start)</div></div></foreignObject>
+</g>
+<line x1="288.00" y1="814.00" x2="288.00" y2="848.20" class="connector" marker-end="url(#arrow)"/>
+<text x="324.00" y="831.50" text-anchor="middle" class="edge-label">No</text>
+<line x1="160.00" y1="880.00" x2="108.00" y2="880.00" class="connector" />
+<line x1="108.00" y1="880.00" x2="108.00" y2="760.00" class="connector" />
+<line x1="108.00" y1="760.00" x2="154.80" y2="760.00" class="connector" marker-end="url(#arrow)"/>
+<text x="78.00" y="820.00" text-anchor="middle" class="edge-label">still</text>
+<text x="78.00" y="840.00" text-anchor="middle" class="edge-label">no</text>
+<line x1="756.00" y1="160.00" x2="660.00" y2="160.00" class="connector" />
+<line x1="660.00" y1="160.00" x2="660.00" y2="280.00" class="connector" />
+<line x1="660.00" y1="280.00" x2="742.80" y2="280.00" class="connector" marker-end="url(#arrow)"/>
+<text x="708.00" y="136.00" text-anchor="middle" class="edge-label">No</text>
+<text x="634.00" y="220.00" text-anchor="middle" class="edge-label">continue</text>
+<text x="634.00" y="240.00" text-anchor="middle" class="edge-label">with current step</text>
+</svg>
+  </div>
+
+  <footer class="credit">Based on AmeriTech's APM Processes cheat sheet &mdash; click a step for the full write-up.</footer>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-wrap">
+    <div class="modal" id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <span class="modal-tag" id="modalTag"></span>
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody"></div>
+      <div class="modal-nav">
+        <button id="modalPrev" type="button">&larr; Previous step</button>
+        <button id="modalNext" type="button">Next step &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
+  <div class="lightbox-figure">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<script>
+const STEP_DATA = {"n1": {"title": "Assigned to Project", "tag": "Trigger", "kind": "terminal", "bodyHtml": "<ul><li>This notification will be an email from someone internally (normally <b>Sean, QA Manager</b>) assigning the Project Executive, PM, APM, and Superintendent (if known).</li><li>This email will include the budget, award, etc.</li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/9d16e3c87c70.webp\" alt=\"Project-assignment email example\" loading=\"lazy\"><figcaption>Project-assignment email example</figcaption></figure></div>"}, "n2": {"title": "Schedule Internal Post-Award Meeting", "tag": "Target: 1&ndash;2 weeks in", "kind": "process", "bodyHtml": "<ul><li>Ideally scheduled within 1&ndash;2 weeks of being assigned to the project.</li><li>Use the scheduling assistant to determine team members&rsquo; availability and send out a Teams invite. Personnel from each department are required.</li><li>Meeting should be scheduled for <span class=\"k\">50 minutes</span> and a conference room should be booked (can still go ahead fully virtually).</li><li>This meeting should still take place even if some people can&rsquo;t make it. Review accepted / rejected invites with Sean before the meeting.</li><li>Required attendees:<ul><li><b>Finance</b> &ndash; Victor (Marni if Victor is unavailable)</li><li><b>BD</b> &ndash; Paul (he will forward to his team as necessary)</li><li><b>Operations</b> &ndash; Project Executive, Project Manager, APM, Tom Yu, Ted Crow, Kali Abrams, Superintendent &amp; SSHO (if known), Cashmere, Kellyann, Mike Paquet, Tom Roy, Rob Maturo, Nathaniel</li><li><b>Legal</b> &ndash; Caroline &amp; Chrissy (only need one)</li></ul></li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/9f004ddfdf17.webp\" alt=\"Internal post-award meeting distribution list example\" loading=\"lazy\"><figcaption>Internal post-award meeting distribution list example</figcaption></figure></div>"}, "n3": {"title": "Set Up Procore, Admin Tool &amp; APM Checklist", "tag": "Gate \u2013 once Finance confirms project is added", "kind": "process", "bodyHtml": "<ul><li>Execute tasks in Procore once the Finance dept. confirms the project has been added.</li><li>Update information in the admin tool (some can be updated on the home page of the project): ensure stage, project name (matches Dropbox), project number, total value, dates, and territory are accurate. Dates will need to be adjusted as they change.</li><li>Add personnel to the project directory (PM, APM, Superintendent, SSHO, and Project Executive) &amp; assign roles to them so they appear on the home page of the project. Add them from the company directory.</li><li>Upload drawings &amp; specs from Dropbox into their respective tools. If N/A and you only have a SOW, upload into the Documents tool and label it appropriately.</li><li>Create the <b>APM Checklist</b> in the Inspections Tool (APMs are responsible for entering data &amp; keeping it updated throughout the project &ndash; it&rsquo;s a helpful tool for tracking and staying on top of your responsibilities).</li><li>Distribution list: PM, Project Executive, and QA Manager (Sean). Due date is the <span class=\"k\">CCD</span>. Assignee is yourself. Fully reviewed during a post-mortem.</li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/65cf017904c5.webp\" alt=\"Procore \u2192 Core Tools \u2192 Admin\" loading=\"lazy\"><figcaption>Procore \u2192 Core Tools \u2192 Admin</figcaption></figure><figure><img src=\"../assets/img/2f41cc1af204.webp\" alt=\"Project Team panel \u2013 add personnel & roles\" loading=\"lazy\"><figcaption>Project Team panel \u2013 add personnel & roles</figcaption></figure><figure><img src=\"../assets/img/79595227f05e.webp\" alt=\"Project Tools \u2192 Inspections\" loading=\"lazy\"><figcaption>Project Tools \u2192 Inspections</figcaption></figure><figure><img src=\"../assets/img/3a13fb2b8146.webp\" alt=\"APM Checklist inspection template\" loading=\"lazy\"><figcaption>APM Checklist inspection template</figcaption></figure><figure><img src=\"../assets/img/30488d86b105.webp\" alt=\"Project Tools \u2192 Meetings\" loading=\"lazy\"><figcaption>Project Tools \u2192 Meetings</figcaption></figure><figure><img src=\"../assets/img/c07c2c2ddb5d.webp\" alt=\"Create Meeting \u2192 Internal Post-Award Meeting template\" loading=\"lazy\"><figcaption>Create Meeting \u2192 Internal Post-Award Meeting template</figcaption></figure></div>"}, "n4": {"title": "Run Internal Post-Award Meeting", "tag": "PM leads &middot; APM supports", "kind": "process", "bodyHtml": "<ul><li>First just create the meeting &amp; save &ndash; you&rsquo;ll import / attach the filled-out template from Dropbox after the actual meeting.</li><li>Use the internal post-award agenda template (found in Templates or the 09-Meeting Minutes folders).</li><li>Be prepared to share your screen and have the correct documents ready to present (budget, estimate, award, SOW, etc.), and take meeting minutes.</li><li>Your Project Manager should be driving this meeting &ndash; it&rsquo;s your job to chime in and help move it along when necessary.</li><li>File the filled-out internal post-award agenda in the <b>09-Meeting Minutes</b> folder (Internal post-award meeting agenda folder) in Dropbox &amp; upload it to the meeting in Procore.</li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/6ee7760e41ea.webp\" alt=\"Internal post-award agenda template\" loading=\"lazy\"><figcaption>Internal post-award agenda template</figcaption></figure><figure><img src=\"../assets/img/f39caa529089.webp\" alt=\"Internal post-award agenda \u2013 filled example\" loading=\"lazy\"><figcaption>Internal post-award agenda \u2013 filled example</figcaption></figure><figure><img src=\"../assets/img/b91e4ff113a9.webp\" alt=\"Filed agenda in 09-Meeting Minutes / Procore\" loading=\"lazy\"><figcaption>Filed agenda in 09-Meeting Minutes / Procore</figcaption></figure></div>"}, "n5": {"title": "Client Kickoff Meeting", "tag": "PM schedules &middot; APM joins", "kind": "process", "bodyHtml": "<ul><li>The APM doesn&rsquo;t normally schedule this with the client, but needs to be in the loop to join.</li><li>Use the post-award kickoff meeting agenda template to take meeting minutes (found in Templates or the 09-Meeting Minutes folders).</li><li>Ask applicable questions to the client: confirm the workflow/distribution lists for RFIs &amp; Submittals, what submittals are required, RFI/Submittal review time if not noted in the contract, etc.</li><li>Make sure when we&rsquo;re receiving <span class=\"k\">NTP</span> is discussed.</li><li>File the filled-out agenda template in the <b>09-Meeting Minutes</b> folder (Post-Award Kickoff Meeting Agenda).</li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/6f1e3c395ad1.webp\" alt=\"Post-award kickoff meeting agenda template\" loading=\"lazy\"><figcaption>Post-award kickoff meeting agenda template</figcaption></figure><figure><img src=\"../assets/img/8e4cffb3872c.webp\" alt=\"Kickoff meeting agenda \u2013 filled example\" loading=\"lazy\"><figcaption>Kickoff meeting agenda \u2013 filled example</figcaption></figure><figure><img src=\"../assets/img/a720e9c2e0f3.webp\" alt=\"Filed kickoff agenda \u2013 Post-Award Kickoff Meeting Agenda\" loading=\"lazy\"><figcaption>Filed kickoff agenda \u2013 Post-Award Kickoff Meeting Agenda</figcaption></figure></div>"}, "d1": {"title": "NTP Received?", "tag": "Decision point", "kind": "decision", "bodyHtml": "<ul><li>Internal submittals can be started right after the internal post-award meeting to get a head start on them &ndash; you don&rsquo;t have to wait on NTP for those.</li><li>But sometimes we don&rsquo;t know which submittals are required from the client until after the kickoff meeting with them.</li><li>Once NTP is received, submit the internal submittals that are ready.</li></ul>"}, "n6b": {"title": "Prep Internal Submittals Early (pre-NTP)", "tag": "Head start &middot; No branch", "kind": "process", "bodyHtml": "<ul><li>Internal submittals can be started right after our internal post-award meeting to get a head start on them.</li><li>Sometimes we don&rsquo;t know which ones are required until after we have the kickoff meeting with the client &ndash; keep prepping what you can in the meantime.</li><li>Once NTP comes through, move straight into submitting.</li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/af86f1946539.webp\" alt=\"18-Submittals folder set: Original / Parts / Response\" loading=\"lazy\"><figcaption>18-Submittals folder set: Original / Parts / Response</figcaption></figure></div>"}, "n7": {"title": "Submit Internal Submittals", "tag": "After NTP", "kind": "process", "bodyHtml": "<ul><li>All submittals should be filed in Dropbox in folder <b>18-Submittals</b> &amp; all set up the same way (Parts, Original, Response).</li><li>Labeling of folders should be either numerical order or sorted by division (specs may require one or the other).</li><li>Format submittal names as: (Spec Section) (Number of submittal under that spec section) (Revision Number) &ndash; (Submittal Name) (Action Code) &ndash; e.g. <span class=\"k\">01.33.23-001-00 &ndash; Submittal Register &ndash; O</span>. Or order by sequence submitted.</li><li>The goal is to always submit the <b>submittal register first</b>, so the client &amp; AmeriTech are on the same page with submittal expectations.</li><li>Other internal submittals include: APP, QC Plan, Construction Waste Management Plan, EPP, Designation Letters, LOTO, AHA, etc. (follow up with your PM for SOV &amp; Schedule until submitted). Use the correct templates.</li><li>Have someone internally (PM, PX, QA Manager) review before submitting &ndash; the PM needs to supply certain portions, so complete your part ASAP. Escalate to the PX or QA Manager if the PM is unresponsive after 1&ndash;2 days.</li><li>All submittals should be in both Dropbox &amp; Procore (even if the client doesn&rsquo;t use Procore).</li><li>Update the submittal register every time a submittal is submitted, responded to, etc. &ndash; the client may ask for an updated register weekly or monthly.</li><li>Use the correct cover sheet.</li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/106f1910f6c4.webp\" alt=\"Submittal folders labeled in numerical order\" loading=\"lazy\"><figcaption>Submittal folders labeled in numerical order</figcaption></figure><figure><img src=\"../assets/img/23d65b586aed.webp\" alt=\"Folder labeling \u2013 sort by division\" loading=\"lazy\"><figcaption>Folder labeling \u2013 sort by division</figcaption></figure><figure><img src=\"../assets/img/c64f130c5f0d.webp\" alt=\"Submittal naming format example\" loading=\"lazy\"><figcaption>Submittal naming format example</figcaption></figure><figure><img src=\"../assets/img/104ffc97f9c1.webp\" alt=\"Submittal name \u2013 spec section / number / revision\" loading=\"lazy\"><figcaption>Submittal name \u2013 spec section / number / revision</figcaption></figure><figure><img src=\"../assets/img/9ea66236288a.webp\" alt=\"002_Templates folder path in Dropbox\" loading=\"lazy\"><figcaption>002_Templates folder path in Dropbox</figcaption></figure><figure><img src=\"../assets/img/b01c41e1d2bc.webp\" alt=\"002_Templates \u2192 Submittals folder path\" loading=\"lazy\"><figcaption>002_Templates \u2192 Submittals folder path</figcaption></figure></div>"}, "n8": {"title": "Subcontractor Submittals", "tag": "Once subs are bought out", "kind": "process", "bodyHtml": "<ul><li>Reach out to subs for submittals once they are bought out &amp; follow up until all are received.</li><li>Schedule an intro meeting with the sub to discuss submittals, using the subcontractor submittal meeting agenda template.</li><li>Identify critical submittals needed immediately (SOV, Schedule, long-lead-time items).</li><li>Send the sub(s) emails daily and follow up with phone calls until all submittals are received.</li><li>Update the submittal register every time a submittal is submitted, responded to, etc.</li><li>Discuss submittals with the PM if you have any doubts or concerns before submitting. Escalate to the PX or QA Manager if the PM is unresponsive after 1&ndash;2 days.</li><li>Use the correct cover sheet.</li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/db0a1cab929b.webp\" alt=\"Subcontractor submittal meeting agenda template\" loading=\"lazy\"><figcaption>Subcontractor submittal meeting agenda template</figcaption></figure></div>"}, "n9": {"title": "Recurring Client Meetings", "tag": "Weekly / bi-weekly &middot; not every project", "kind": "process", "bodyHtml": "<ul><li>APMs are responsible for being on these meetings and taking meeting minutes in Procore. Minutes should be distributed to the client / everyone on the distribution list no later than <b>24 hours</b> after each meeting. Review with the PM before distributing if necessary.</li><li>Project Managers are responsible for making sure the agenda is updated before these meetings, but may need assistance from APMs.</li><li>Follow up with the Superintendent to ensure the 3-week look-ahead is updated and ready to present.</li><li>If the PM is unavailable, discuss with the Project Executive whether the meeting should occur or be cancelled &ndash; have that conversation with enough lead time. Last-minute cancellations or joining unprepared is not acceptable.</li><li>These meetings may start after we mobilize.</li></ul>"}, "n10": {"title": "Pre-Mobilization Meeting", "tag": "3&ndash;4 weeks before mobilizing", "kind": "process", "bodyHtml": "<ul><li>Schedule &amp; execute the internal pre-mobilization meeting 3&ndash;4 weeks before we mobilize.</li><li>Use the internal pre-mobilize checklist (found in the 002 Templates folder or in the project&rsquo;s 09-Meeting Minutes, Internal Pre-Mobilization Meeting Agenda folder).</li><li>Run the meeting and fill out the checklist. After the meeting, file the filled-out checklist in <b>09-Meeting Minutes</b> in Dropbox.</li><li>Required attendees:<ul><li><b>Finance</b> &ndash; Lauria / Maria (only one needs to attend)</li><li><b>Operations</b> &ndash; PX, PM, APM, QA Manager; Senior Management optional</li></ul></li><li>Follow up the meeting with an email to the internal team. Attach the filled-out checklist for reference and reiterate everyone&rsquo;s responsibilities moving forward. Track tasks to ensure they&rsquo;re completed before we mobilize.</li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/d92888dfddeb.webp\" alt=\"Internal pre-mobilize checklist template\" loading=\"lazy\"><figcaption>Internal pre-mobilize checklist template</figcaption></figure><figure><img src=\"../assets/img/29b539e2ffb0.webp\" alt=\"Pre-mobilization meeting agenda example\" loading=\"lazy\"><figcaption>Pre-mobilization meeting agenda example</figcaption></figure></div>"}, "n11": {"title": "Mobilize \u2013 Ongoing Duties", "tag": "Runs continuously during construction", "kind": "process", "bodyHtml": "<ul><li>Keep filling out the APM checklist.</li><li>Follow up on any outstanding submittals.</li><li>Review daily logs.</li><li>Submit RFIs when necessary.</li><li>Track PCOs &amp; Mods.</li></ul>"}, "d2": {"title": "Nearing Completion?", "tag": "Decision point", "kind": "decision", "bodyHtml": "<ul><li>Keep cycling through the ongoing mobilized duties (checklist, submittals, daily logs, RFIs, PCOs/Mods) alongside your recurring client meetings.</li><li>As the project approaches its end, shift into closeout: start gathering the documents you&rsquo;ll need and confirming what the COR expects.</li></ul>"}, "n13": {"title": "Closeout", "tag": "Due &le; 1 week after demobilization", "kind": "process", "bodyHtml": "<ul><li>As the project is coming to an end, the APM will gather all applicable closeout documents (the APM may need to ask the COR what is provided if not specified in the specs).</li><li>This includes creating internal closeout docs &ndash; the AmeriTech warranty, found in <b>002 Templates &rarr; Sign Off, Close Out, Warranty</b>.</li><li>Reach out to subs for as-builts, O&amp;Ms, warranties, etc.</li><li>These should be submitted no later than one week after we demobilize.</li><li>File everything in the project&rsquo;s <b>03 Close Out</b> folder.</li></ul><div class=\"modal-gallery\"><figure><img src=\"../assets/img/4288ccbbc3ba.webp\" alt=\"Closeout documentation example\" loading=\"lazy\"><figcaption>Closeout documentation example</figcaption></figure></div>"}, "n14": {"title": "Project Closed", "tag": "End", "kind": "terminal", "bodyHtml": "<ul><li>All closeout documentation filed and the project record is complete.</li></ul>"}, "__reminders__": {"title": "Always Remember", "tag": "Reference", "kind": "terminal", "bodyHtml": "<ul><li>Project number / project name always included in the subject line of emails.</li><li>At minimum, copy the PM &amp; Project Executive on all project correspondence. Always okay to also copy the Superintendent, Sean, Senior Management, etc. from AmeriTech so they&rsquo;re tracking.</li><li>It&rsquo;s okay to tell the sub or client you don&rsquo;t have an answer for them in the moment and will get back to them once you discuss with the PM.</li><li>Always know the <span class=\"k\">CCD</span>.</li><li>Always know the COR &amp; CO / CS contact info.</li></ul>"}};
+const STEP_ORDER = ["n1", "n2", "n3", "n4", "n5", "d1", "n6b", "n7", "n8", "n9", "n10", "n11", "d2", "n13", "n14"];
+
+const overlay = document.getElementById('modalOverlay');
+const modalBox = document.getElementById('modalBox');
+const modalTag = document.getElementById('modalTag');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalPrev = document.getElementById('modalPrev');
+const modalNext = document.getElementById('modalNext');
+
+let currentId = null;
+let lastFocused = null;
+
+function renderStep(id) {
+  const data = STEP_DATA[id];
+  if (!data) return;
+  currentId = id;
+  modalTag.textContent = data.tag;
+  modalTag.className = 'modal-tag tag-' + data.kind;
+  modalTitle.textContent = data.title;
+  modalBody.innerHTML = data.bodyHtml;
+
+  const idx = STEP_ORDER.indexOf(id);
+  modalPrev.disabled = idx <= 0;
+  modalNext.disabled = idx === -1 || idx >= STEP_ORDER.length - 1;
+  modalBox.scrollTop = 0;
+}
+
+function openModal(id) {
+  lastFocused = document.activeElement;
+  renderStep(id);
+  overlay.classList.add('open');
+  modalBox.focus();
+  document.addEventListener('keydown', onKeydown);
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.removeEventListener('keydown', onKeydown);
+  if (lastFocused) lastFocused.focus();
+}
+
+function onKeydown(e) {
+  if (e.key === 'Escape') {
+    if (lightboxOverlay.classList.contains('open')) { closeLightbox(); return; }
+    closeModal();
+    return;
+  }
+  if (lightboxOverlay.classList.contains('open')) return;
+  if (e.key === 'ArrowRight' && !modalNext.disabled) step(1);
+  if (e.key === 'ArrowLeft' && !modalPrev.disabled) step(-1);
+}
+
+const lightboxOverlay = document.getElementById('lightboxOverlay');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCaption = document.getElementById('lightboxCaption');
+let lightboxLastFocused = null;
+
+function openLightbox(src, caption) {
+  lightboxLastFocused = document.activeElement;
+  lightboxImg.src = src;
+  lightboxImg.alt = caption || '';
+  lightboxCaption.textContent = caption || '';
+  lightboxOverlay.classList.add('open');
+}
+
+function closeLightbox() {
+  lightboxOverlay.classList.remove('open');
+  lightboxImg.src = '';
+  if (lightboxLastFocused) lightboxLastFocused.focus();
+}
+
+modalBody.addEventListener('click', (e) => {
+  const img = e.target.closest('.modal-gallery img');
+  if (!img) return;
+  const caption = img.closest('figure')?.querySelector('figcaption')?.textContent || img.alt || '';
+  openLightbox(img.src, caption);
+});
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightboxImg.addEventListener('click', closeLightbox);
+lightboxOverlay.addEventListener('click', (e) => { if (e.target === lightboxOverlay) closeLightbox(); });
+
+function step(dir) {
+  const idx = STEP_ORDER.indexOf(currentId);
+  const nextIdx = idx + dir;
+  if (nextIdx >= 0 && nextIdx < STEP_ORDER.length) renderStep(STEP_ORDER[nextIdx]);
+}
+
+function fitNodeText() {
+  document.querySelectorAll('.fo-wrap').forEach(wrap => {
+    const main = wrap.querySelector('.fo-main');
+    const sub = wrap.querySelector('.fo-sub');
+    if (!main) return;
+    const isDecision = wrap.closest('.node-decision') !== null;
+    let mainSize = isDecision ? 14.4 : 16, subSize = 11.6;
+    main.style.fontSize = mainSize + 'px';
+    if (sub) sub.style.fontSize = subSize + 'px';
+    let guard = 50;
+    while (wrap.scrollHeight > wrap.clientHeight + 1 && mainSize > 8 && guard > 0) {
+      mainSize -= 0.6;
+      subSize -= 0.44;
+      main.style.fontSize = mainSize + 'px';
+      if (sub) sub.style.fontSize = Math.max(subSize, 7) + 'px';
+      guard--;
+    }
+  });
+}
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(fitNodeText).catch(fitNodeText);
+} else {
+  fitNodeText();
+}
+window.addEventListener('load', fitNodeText);
+setTimeout(fitNodeText, 350);
+
+document.querySelectorAll('.node').forEach(el => {
+  const id = el.getAttribute('data-step');
+  el.addEventListener('click', () => openModal(id));
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(id); }
+  });
+});
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+modalPrev.addEventListener('click', () => step(-1));
+modalNext.addEventListener('click', () => step(1));
+
+</script>
+
+<a class="app-home" href="./" aria-label="Back to all workflows"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Workflows</a>
+
+<link rel="stylesheet" href="../assets/workflow-fixes.css">
+<script src="../assets/workflow-fixes.js"></script>
+<a class="hub-return" href="../#resources">AmeriVerse Hub →</a>
