@@ -10,7 +10,7 @@ Live site: https://robnettstories.github.io/ameriverse_test/
 - **Job Site:** project health, weighted PM capacity, manpower and qualifications, equipment, observations normalized by labor hours, and a transparent proposed subcontractor index with human-review indicators.
 - **Employee Resources:** searchable supplied workflows for AIA billing by date, AIA billing flow, subcontract buyout and the APM lifecycle; original DOCX downloads and illustrative learning profiles.
 - **Insights Studio:** explicitly labeled future concept, invented benchmarks, decided-bid metrics and a separate fictional client report. Internal portfolio records are not exposed through the concept.
-- **Connected Enterprise:** the original data sphere at `connected-enterprise.html`.
+- **Datasphere:** a dedicated navigation tab for the original interactive Connected Enterprise graph, with search, department filtering, node selection, rotation/zoom and the observation walkthrough. It stays inside the hub, with a full-screen option at `connected-enterprise.html`.
 
 Suggested walkthrough: open the $40M Federal Medical Center at 62% completion and compare Coastal Facilities Services at 64%. In Cash & capacity, allocate 1 APM FTE to each of Federal Medical and Pacific Research, then allocate the single billing FTE. Review submission and collection dates, PM load, weekly receipts, AP payments and assumptions; reset. Finish with the owner-filtered action queue.
 

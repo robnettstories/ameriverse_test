@@ -6,7 +6,7 @@ const output=process.env.QA_OUTPUT||path.resolve(__dirname,'../test-results');
 fs.mkdirSync(output,{recursive:true});
 const results={base,started:new Date().toISOString(),engines:[],checks:[],errors:[],performance:[],limitations:['Desktop browser device emulation is not physical iPhone or iPad testing.','Native iOS sharing, installation and resume require physical-device validation.']};
 const profiles=[{name:'desktop',viewport:{width:1440,height:1000}},{name:'iphone-375',viewport:{width:375,height:812},isMobile:true,hasTouch:true,deviceScaleFactor:2},{name:'iphone-390',viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:3},{name:'ipad-portrait',viewport:{width:768,height:1024},isMobile:true,hasTouch:true,deviceScaleFactor:2},{name:'ipad-landscape',viewport:{width:1024,height:768},isMobile:true,hasTouch:true,deviceScaleFactor:2}];
-const routes=['executive','executive/cash','executive/actions','jobsite/health','jobsite/people','jobsite/assets','jobsite/vendors','resources','insights'];
+const routes=['executive','executive/cash','executive/actions','jobsite/health','jobsite/people','jobsite/assets','jobsite/vendors','resources','insights','datasphere'];
 const workflows=['aia-billing-by-date.html','aia-billing-flow-chart.html','subcontract-buyout-flow-chart.html','apm-project-workflow.html'];
 let engine,device;
 async function check(name,fn){try{const detail=await fn();results.checks.push({engine,device,name,status:'passed',...detail});console.log('PASS',engine,device,name);}catch(e){results.checks.push({engine,device,name,status:'failed',error:e.stack});console.log('FAIL',engine,device,name,e.message);}}
@@ -36,7 +36,7 @@ await check('Offline first-load cache and all portal/workflow navigation',async(
  }
  await target.goto(targetBase+'#executive');await target.evaluate(()=>navigator.serviceWorker.ready);await target.waitForFunction(()=>navigator.serviceWorker.controller);await target.waitForFunction(async()=>!!(await caches.match(new URL('workflows/apm-project-workflow.html',location.href))),null,{timeout:30000});await target.reload();
  if(localServer){await new Promise(resolve=>{localServer.close(resolve);localServer.closeAllConnections();});}else await context.setOffline(true);
- for(const route of ['executive','executive/cash','jobsite/health','resources','insights']){await target.goto(targetBase+'#'+route);await target.locator('h1').waitFor();await layout(target);}
+ for(const route of ['executive','executive/cash','jobsite/health','resources','insights','datasphere']){await target.goto(targetBase+'#'+route);await target.locator('h1').waitFor();await layout(target);}
  for(const file of [...workflows,'']){const response=await target.goto(targetBase+'workflows/'+file);assert.equal(response.status(),200);}
  if(localServer)await target.close();else await context.setOffline(false);
  return {method:localServer?'Local origin stopped after cache installation; all subsequent requests served without a server':'Browser context offline after cache installation'};

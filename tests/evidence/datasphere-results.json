@@ -1,0 +1,95 @@
+{
+  "base": "http://127.0.0.1:8765/",
+  "checks": [
+    {
+      "engine": "Chromium",
+      "profile": "desktop",
+      "status": "passed",
+      "layout": {
+        "width": 1440,
+        "scroll": 1440
+      }
+    },
+    {
+      "engine": "Chromium",
+      "profile": "iphone-375",
+      "status": "passed",
+      "layout": {
+        "width": 375,
+        "scroll": 375
+      }
+    },
+    {
+      "engine": "Chromium",
+      "profile": "iphone-390",
+      "status": "passed",
+      "layout": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "engine": "Chromium",
+      "profile": "ipad-portrait",
+      "status": "passed",
+      "layout": {
+        "width": 768,
+        "scroll": 768
+      }
+    },
+    {
+      "engine": "Chromium",
+      "profile": "ipad-landscape",
+      "status": "passed",
+      "layout": {
+        "width": 1024,
+        "scroll": 1024
+      }
+    },
+    {
+      "engine": "WebKit",
+      "profile": "desktop",
+      "status": "passed",
+      "layout": {
+        "width": 1440,
+        "scroll": 1440
+      }
+    },
+    {
+      "engine": "WebKit",
+      "profile": "iphone-375",
+      "status": "passed",
+      "layout": {
+        "width": 375,
+        "scroll": 375
+      }
+    },
+    {
+      "engine": "WebKit",
+      "profile": "iphone-390",
+      "status": "passed",
+      "layout": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "engine": "WebKit",
+      "profile": "ipad-portrait",
+      "status": "passed",
+      "layout": {
+        "width": 768,
+        "scroll": 768
+      }
+    },
+    {
+      "engine": "WebKit",
+      "profile": "ipad-landscape",
+      "status": "passed",
+      "layout": {
+        "width": 1024,
+        "scroll": 1024
+      }
+    }
+  ]
+}

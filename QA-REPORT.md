@@ -68,3 +68,15 @@ These measurements meet the selected LCP ≤ 2.5 s and CLS ≤ 0.1 targets in th
 ## Physical-device limits
 
 Headless WebKit and Chromium do not establish physical Safari behavior. Native iOS sharing, Home Screen installation, resume, actual safe-area appearance and device responsiveness still need a real iPhone/iPad check over the deployed HTTPS URL before a CEO presentation. The app makes no production offline or live-integration claim.
+
+## Datasphere navigation update
+
+Added **Datasphere** as a fifth primary navigation tab at `#datasphere`. The existing interactive Connected Enterprise graph now opens inside the hub, with an optional full-screen window. Embedded mode keeps the hub navigation visible, and the standalone graph returns to the Datasphere tab. Mobile navigation accommodates all five tabs and the graph controls provide 44-pixel touch targets.
+
+- Ten focused interaction scenarios passed: Chromium and WebKit at desktop, iPhone 375/390, iPad portrait and iPad landscape sizes. These cover navigation, search, department filtering, real pointer node selection and rotation, desktop wheel zoom, simulated pinch handlers, all 13 walkthrough steps, replay/exit, reset, full-screen return and layout.
+- Chromium additionally verified the embedded graph works after reloading offline on all five profiles.
+- The updated responsive suite passed 100 portal/viewport checks in both engines, including the Datasphere route.
+- All six model tests and the local-resource build validation passed.
+- Headless pinch-handler checks do not establish physical-device gesture behavior.
+
+Evidence: `tests/evidence/datasphere-results.json`; focused runner: `tests/datasphere.cjs`.

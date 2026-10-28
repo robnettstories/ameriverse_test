@@ -10,4 +10,9 @@ summary{min-height:44px!important;padding-block:10px}
 @media(pointer:coarse){input,select{font-size:16px!important}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 .alert-strip .text-button{min-height:44px!important}
+.datasphere-stage{height:clamp(580px,calc(100dvh - 255px),960px);border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--navy)}
+.datasphere-frame{display:block;width:100%;height:100%;border:0}
+.datasphere-open{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 15px;border:1px solid var(--line);border-radius:6px;background:white;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}
+.datasphere-open:hover{background:#f4f7f9;border-color:#a4b5c2}
+@media(max-width:700px){.sidebar nav{grid-template-columns:repeat(5,minmax(0,1fr))}.sidebar nav a{height:64px;min-height:64px;padding:5px 2px;gap:3px}.app-shell{padding-top:calc(131px + env(safe-area-inset-top))}.datasphere-stage{height:660px}.datasphere-open{font-size:12px}}
 @media print{.sidebar,.topbar,.tabs,.heading-actions,.filters,.app-footer,.dialog-close,.toast{display:none!important}.app-shell{margin:0;padding:0}main{padding:0}.panel,.kpi,.workflow-card{break-inside:avoid}body{background:white}dialog[open]{position:static;max-height:none;width:100%;overflow:visible;box-shadow:none}}
