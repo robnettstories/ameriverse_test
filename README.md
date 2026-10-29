@@ -58,3 +58,5 @@ See `QA-REPORT.md` for browser evidence and limits. Native iOS sharing, Home Scr
 Open the Datasphere tab and choose **Download HTML**, or use `downloads/AmeriVerse-Datasphere-Standalone.html` directly. The single file embeds its SVG logo, fonts, CSS and JavaScript. It works without a GitHub account, server or network connection. Save it locally, then open it in a modern browser. Search, department filters, node details, rotation/zoom, the complete observation walkthrough and reset are retained. It contains only synthetic demo data and no link back to the hub.
 
 `npm run export:datasphere` regenerates this file; `npm run build` also regenerates it before validating and versioning the site's cache. `node tests/standalone.cjs` checks the exported bytes with networking disabled in Chromium and WebKit across five viewport profiles.
+
+Typography uses Source Sans 3 for headings, navigation, workflow text and the datasphere. Financial and numerical labels use IBM Plex Mono. Both families are embedded in the standalone HTML; no commercial font files are required.

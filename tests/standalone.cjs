@@ -20,7 +20,7 @@ const results=[];
    await page.evaluate(()=>document.fonts.ready);
    assert.equal(await page.locator('.hub-back').count(),0);
    assert.ok(await page.locator('.logo-card img').evaluate(image=>image.complete&&image.naturalWidth>0&&image.src.startsWith('data:image/svg+xml;base64,')));
-   assert.ok(await page.evaluate(()=>document.fonts.check('400 16px "Source Sans 3"')&&document.fonts.check('700 23px "Barlow Condensed"')));
+   assert.ok(await page.evaluate(()=>document.fonts.check('400 16px "Source Sans 3"')&&document.fonts.check('700 23px "Source Sans 3"')));
    await page.locator('#search').fill('Cash Collection');
    assert.equal(await page.locator('#nodeName').textContent(),'Cash Collection');
    assert.ok(Number(await page.locator('#nodeCount').textContent())>0);

@@ -94,3 +94,13 @@ The supplied `AmeriTech-Colored.svg` is preserved as `assets/brand/ameritech-col
 - Local references resolve and the regenerated service worker precaches 73 entries.
 
 Evidence: `tests/evidence/standalone-results.json`, `branded-datasphere-results.json`, `branded-responsive-results.json` and `branded-pages-results.json`. Physical iOS installation/share/resume limits stated above continue to apply.
+
+## Source Sans 3 typography selection
+
+Source Sans 3 is the primary face for portal headings, navigation, workflow headings/diagrams and the datasphere. IBM Plex Mono serves numerical and technical labels. Active Barlow Condensed face declarations and preload were removed. The standalone export now embeds four font faces and is 256,091 bytes.
+
+- All 100 responsive/control checks passed in Chromium and WebKit.
+- Ten offline standalone scenarios passed with no external requests and the selected Source Sans 3 faces loaded.
+- Twenty workflow heading/logo/layout checks and four exact-byte HTML download checks passed in both engines at 390 and 1440 pixels.
+
+Evidence: `tests/evidence/source-sans-responsive-results.json`, `source-sans-standalone-results.json`, `source-sans-pages-results.json`.
