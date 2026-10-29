@@ -97,7 +97,7 @@ const profiles = [
 
         if(profile.name==='desktop') {
           const popupPromise=context.waitForEvent('page');
-          await page.locator('.datasphere-open').click();
+          await page.locator('.datasphere-open[href="connected-enterprise.html"]').click();
           const popup=await popupPromise;
           await popup.locator('.hub-back').waitFor();
           await popup.locator('.hub-back').click();

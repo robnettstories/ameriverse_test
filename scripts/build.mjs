@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 const root=fileURLToPath(new URL('../',import.meta.url));
+await import('./export-datasphere.mjs');
 async function files(directory){const entries=await readdir(directory,{withFileTypes:true});return (await Promise.all(entries.filter(e=>!e.name.startsWith('.')&&!['node_modules','test-results','tests','scripts','package.json','README.md','QA-REPORT.md','IMPLEMENTATION-BRIEF.md','sw.js'].includes(e.name)).map(async e=>e.isDirectory()?files(path.join(directory,e.name)):path.relative(root,path.join(directory,e.name))))).flat();}
 const assets=(await files(root)).sort();
 // Reject absent local resource references, including source workflow modals.

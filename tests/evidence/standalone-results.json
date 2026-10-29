@@ -1,0 +1,115 @@
+{
+  "file": "/workspace/ameriverse_test/downloads/AmeriVerse-Datasphere-Standalone.html",
+  "checks": [
+    {
+      "engine": "Chromium",
+      "profile": "desktop",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 1440,
+        "scroll": 1440
+      },
+      "externalRequests": 0
+    },
+    {
+      "engine": "Chromium",
+      "profile": "iphone-375",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 375,
+        "scroll": 375
+      },
+      "externalRequests": 0
+    },
+    {
+      "engine": "Chromium",
+      "profile": "iphone-390",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 390,
+        "scroll": 390
+      },
+      "externalRequests": 0
+    },
+    {
+      "engine": "Chromium",
+      "profile": "ipad-portrait",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 768,
+        "scroll": 768
+      },
+      "externalRequests": 0
+    },
+    {
+      "engine": "Chromium",
+      "profile": "ipad-landscape",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 1024,
+        "scroll": 1024
+      },
+      "externalRequests": 0
+    },
+    {
+      "engine": "WebKit",
+      "profile": "desktop",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 1440,
+        "scroll": 1440
+      },
+      "externalRequests": 0
+    },
+    {
+      "engine": "WebKit",
+      "profile": "iphone-375",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 375,
+        "scroll": 375
+      },
+      "externalRequests": 0
+    },
+    {
+      "engine": "WebKit",
+      "profile": "iphone-390",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 390,
+        "scroll": 390
+      },
+      "externalRequests": 0
+    },
+    {
+      "engine": "WebKit",
+      "profile": "ipad-portrait",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 768,
+        "scroll": 768
+      },
+      "externalRequests": 0
+    },
+    {
+      "engine": "WebKit",
+      "profile": "ipad-landscape",
+      "status": "passed",
+      "loading": "Exact exported HTML rendered with networking disabled",
+      "layout": {
+        "width": 1024,
+        "scroll": 1024
+      },
+      "externalRequests": 0
+    }
+  ]
+}

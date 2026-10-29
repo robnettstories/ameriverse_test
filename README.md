@@ -45,10 +45,16 @@ The incremental support pool contains 2.0 APM FTE and 1.0 billing FTE. Controls 
 
 ## Supplied materials
 
-The logo, fonts, icons, workflow content, screenshots and DOCX files come from `AmeriTech-Workflows-App.zip`. Workflows retain supplied content, with local asset paths and hub navigation adapted. Shared fixes provide 44-pixel close/previous/next controls, initial focus, focus containment, return focus, safe areas and reduced-motion handling. The untouched reference remains outside this checkout.
+The fonts, workflow content, screenshots and DOCX files come from `AmeriTech-Workflows-App.zip`. The logo now uses the supplied `AmeriTech-Colored.svg` exactly, with navy `#0C273C` and red `#AF2838`; app icons are rendered from its emblem. Hub and workflow headers use the same vector asset. Workflows retain supplied content, with local asset paths and hub navigation adapted. Shared fixes provide 44-pixel close/previous/next controls, initial focus, focus containment, return focus, safe areas and reduced-motion handling. The untouched reference remains outside this checkout.
 
 ## Offline and updates
 
 The manifest includes regular, maskable and Apple touch icons. On HTTPS or localhost, a service worker caches the synthetic app and workflows after initial installation. Caches are scoped to the site's path and versioned from application content and worker behavior. A waiting update offers a reload button; activation clears only this site's older caches.
 
 See `QA-REPORT.md` for browser evidence and limits. Native iOS sharing, Home Screen installation, resume and hardware responsiveness require a physical iPhone/iPad check before a CEO presentation.
+
+## Standalone datasphere export
+
+Open the Datasphere tab and choose **Download HTML**, or use `downloads/AmeriVerse-Datasphere-Standalone.html` directly. The single file embeds its SVG logo, fonts, CSS and JavaScript. It works without a GitHub account, server or network connection. Save it locally, then open it in a modern browser. Search, department filters, node details, rotation/zoom, the complete observation walkthrough and reset are retained. It contains only synthetic demo data and no link back to the hub.
+
+`npm run export:datasphere` regenerates this file; `npm run build` also regenerates it before validating and versioning the site's cache. `node tests/standalone.cjs` checks the exported bytes with networking disabled in Chromium and WebKit across five viewport profiles.

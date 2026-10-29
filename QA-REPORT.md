@@ -80,3 +80,17 @@ Added **Datasphere** as a fifth primary navigation tab at `#datasphere`. The exi
 - Headless pinch-handler checks do not establish physical-device gesture behavior.
 
 Evidence: `tests/evidence/datasphere-results.json`; focused runner: `tests/datasphere.cjs`.
+
+## Exact vector branding and standalone export
+
+The supplied `AmeriTech-Colored.svg` is preserved as `assets/brand/ameritech-colored.svg`. Its exact navy (`#0C273C`) and red (`#AF2838`) are used in the hub and datasphere. Headers, workflow logos/watermarks and app icons now use this reference. Existing status and department colors continue to distinguish functional categories.
+
+`downloads/AmeriVerse-Datasphere-Standalone.html` embeds all code, styles, the vector logo and six local font faces. It has no external asset dependencies or navigation back to GitHub/the hub. The Datasphere tab provides a direct HTML download. Every site build regenerates the export.
+
+- Ten standalone scenarios passed in Chromium and WebKit across desktop, 375/390-pixel phones, iPad portrait and landscape. The exact exported HTML was rendered with networking disabled; all interactions passed and zero external requests were observed.
+- Native `file://` opening and node search were also verified in WebKit with zero HTTP requests. This managed Chromium blocks `file://` navigation by policy, so its check renders the exact file bytes directly. WebKit's inspector offline flag also blocks navigation before file dispatch; the cross-engine offline checks use direct HTML rendering without changing browser security settings.
+- Ten hosted-datasphere scenarios and 100 responsive/control checks passed locally in both engines.
+- Twenty workflow page/logo/layout checks and four byte-matching HTML download checks passed in Chromium and WebKit at 390 and 1440 pixels.
+- Local references resolve and the regenerated service worker precaches 73 entries.
+
+Evidence: `tests/evidence/standalone-results.json`, `branded-datasphere-results.json`, `branded-responsive-results.json` and `branded-pages-results.json`. Physical iOS installation/share/resume limits stated above continue to apply.
